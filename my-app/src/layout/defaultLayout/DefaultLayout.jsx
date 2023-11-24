@@ -1,7 +1,13 @@
+import Header from '../header';
+import Footer from '../footer';
 
 function DefaultLayout({ children }) {
     return (
-        children
+        <div>
+            <Header />
+            {children}
+            <Footer />
+        </div>
     );
 }
 
