@@ -7,7 +7,7 @@ function Detail() {
 
     useEffect(() => {
         const parts = location.pathname.split('/');
-        if (parts[2] && parts[2] !== "husband" && parts[2] !== "wife" && parts[2] !== "love") {
+        if (parts[2] && parts[2] !== "life_coach" && parts[2] !== "pointing_hand" && parts[2] !== "education" && parts[2] !== "translate") {
         }
     }, [location])
 
@@ -19,7 +19,7 @@ function Detail() {
                     <div className='w-full'>
                         <div className='text-[24px] font-[700] mt-[30px]'>CHỒNG ĐƯA NGƯỜI TÌNH VỀ NHÀ, VỢ BẮT ĐƯỢC TẠI TRẬN VÀ CÁI KẾT SAU 10 NĂM</div>
                         <i class="fa fa-gg-circle" aria-hidden="true"></i>
-                        <div>Ô ban con yena</div>
+                        <div>chi tiết</div>
                     </div>
                 </div>
             </div>

@@ -5,10 +5,11 @@ import Home from "../acess/svg/home.svg";
 import item1 from '../acess/item1.jpg';
 import { Link } from 'react-router-dom';
 
+
 function Category() {
 
     let location = useLocation();
-    const [title, setTitle] = useState("CHUYỆN CHỒNG NGOẠI TÌNH")
+    const [title, setTitle] = useState("")
     const [keySearch, setKeySearch] = useState("")
 
     const [numPage, setNumPage] = useState(1)
@@ -27,24 +28,21 @@ function Category() {
         }
     }
     useEffect(() => {
-        if (location.pathname.includes("husband")) {
-            setTitle("CHUYỆN CHỒNG NGOẠI TÌNH")
-        } else if (location.pathname.includes("wife")) {
-            setTitle("CHUYỆN VỢ NGOẠI TÌNH")
+        if (location.pathname.includes("life_coach")) {
+            setTitle("LIFE COACH")
+        } else if (location.pathname.includes("pointing_hand")) {
+            setTitle("cÁCH XEM CHỈ TAY")
         }
-        else if (location.pathname.includes("love")) {
-            setTitle("TẢN MẠN TÌNH YÊU")
+        else if (location.pathname.includes("education")) {
+            setTitle("GIÁO DỤC TIẾNG NHẬT")
         }
-        else if (location.pathname.includes("new")) {
-            setTitle("CHUYỆN NGOẠI TÌNH MỚI")
-        }
-        else if (location.pathname.includes("outstanding")) {
-            setTitle("CHUYỆN NGOẠI TÌNH NỔI BẬT")
+        else if (location.pathname.includes("translate")) {
+            setTitle("PHIÊN DỊCH, DỊCH THUẬT NHẬT-VIỆT")
         }
 
         const parts = decodeURI(location.pathname).split('/');
         setKeySearch("")
-        if (parts[2] && parts[2] !== "husband" && parts[2] !== "wife" && parts[2] !== "love") {
+        if (parts[2] && parts[2] !== "life_coach" && parts[2] !== "pointing_hand" && parts[2] !== "education" && parts[2] !== "translate") {
             setKeySearch(parts[2])
             setTitle("Search Results")
         }

@@ -45,12 +45,12 @@ function Contact() {
                                                 placeholder="Email"
                                                 style={{ marginBottom: '10px' }}
                                             />
-                                            <input
+                                            {/* <input
                                                 type="text"
                                                 class="form-control"
                                                 placeholder="Câu chuyện của bạn"
                                                 style={{ marginBottom: '10px' }}
-                                            />
+                                            /> */}
                                             <button class="btn" type="submit" className='text-white bg-[black] uppercase px-[10px] py-[10px] my-[10px]'>
                                                 Đăng ký
                                             </button>
@@ -59,7 +59,9 @@ function Contact() {
                                     <div className='w-full py-[30px] md:py-0'>
                                         <div className='text-[16px] font-[700] mb-[10px]'>Tư vấn tâm lý online</div>
                                         <div className='text-[14px]  mb-[10px]'>Email: tuvanchuyenngoaitinh@gmail.com</div>
-                                        <div className='text-[14px] mb-[10px]'>Luôn lắng nghe, đồng hành cùng quý vị trong hành trình chữa lành những khổ đau, tìm lại niềm an vui trong cuộc sống</div>
+                                        <div className='text-[14px] mb-[10px]'>
+                                            Chủ đề: life coach , chia sẻ cách xem chỉ tay , phong thuỷ theo trường phái Nhật Bản, Giáo dục tiếng Nhật , phiên dịch dịch thuật tiếng Nhật , Viêt
+                                        </div>
                                     </div>
                                 </div>
                             </div>

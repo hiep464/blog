@@ -12,17 +12,25 @@ function Header() {
             route: '/home',
             default: true
         },
+        // {
+        //     label: 'Về chúng tôi',
+        //     route: '/contact',
+        // },
         {
-            label: 'Chuyện chồng ngoại tình',
-            route: '/category/husband',
+            label: 'life coach',
+            route: '/category/life_coach',
         },
         {
-            label: 'Chuyện vợ ngoại tình',
-            route: '/category/wife',
+            label: 'cách xem chỉ tay',
+            route: '/category/pointing_hand',
         },
         {
-            label: 'Tản mạn tình yêu',
-            route: '/category/love',
+            label: 'giáo dục tiếng nhật',
+            route: '/category/education',
+        },
+        {
+            label: 'phiên dịch, dịch thuật nhật- việt',
+            route: '/category/translate',
         },
         {
             label: 'Liên hệ',
@@ -129,11 +137,16 @@ function Header() {
                 </div>
                 <div className='absolute top-[90px] w-full px-[20px] right-0 z-10 !flex md:!hidden'>
                     <div class="dropdown-menu pull-right" role="menu" className={`w-full flex flex-col bg-white text-black ${showMenu ? "flex" : 'hidden'}`}>
-                        <Link onClick={() => setShowMenu(!showMenu)} to={'/home'} className='text-black no-underline w-full px-[15px] py-[8px] border-b-[1px] border-solid border-[#e5e5e5] uppercase text-[14px]'>HOME</Link>
+                        {/* <Link onClick={() => setShowMenu(!showMenu)} to={'/home'} className='text-black no-underline w-full px-[15px] py-[8px] border-b-[1px] border-solid border-[#e5e5e5] uppercase text-[14px]'>HOME</Link>
                         <Link onClick={() => setShowMenu(!showMenu)} to={'/category/husband'} className='text-black no-underline  w-full px-[15px] py-[8px] border-b-[1px] border-solid border-[#e5e5e5] uppercase text-[14px]'>Chuyện chồng ngoại tình</Link>
                         <Link onClick={() => setShowMenu(!showMenu)} to={'/category/wife'} className='text-black no-underline  w-full px-[15px] py-[8px] border-b-[1px] border-solid border-[#e5e5e5] uppercase text-[14px]'>Chuyện vợ ngoại tình</Link>
                         <Link onClick={() => setShowMenu(!showMenu)} to={'/category/love'} className='text-black no-underline  w-full px-[15px] py-[8px] border-b-[1px] border-solid border-[#e5e5e5] uppercase text-[14px]'>Tản mạn tình yêu</Link>
                         <Link onClick={() => setShowMenu(!showMenu)} to={'/contact'} className='text-black no-underline  w-full px-[15px] py-[8px] border-b-[1px] border-solid border-[#e5e5e5] uppercase text-[14px]'>Liên hệ</Link>
+                        <Link onClick={() => setShowMenu(!showMenu)} to={'/contact'} className='text-black no-underline  w-full px-[15px] py-[8px] border-b-[1px] border-solid border-[#e5e5e5] uppercase text-[14px]'>Liên hệ</Link> */}
+                        {HomeRoutesConfig.map(item => (
+                        <Link scroll={true} key={item.route} onClick={() => setShowMenu(!showMenu)} className='text-black no-underline  w-full px-[15px] py-[8px] border-b-[1px] border-solid border-[#e5e5e5] uppercase text-[14px]' to={`${item.route}`}>{item.label}
+                        </Link>
+                    ))}
                     </div>
                 </div>
             </div>

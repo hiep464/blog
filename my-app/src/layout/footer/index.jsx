@@ -73,12 +73,12 @@ function Footer() {
                                     placeholder="Email"
                                     style={{ marginBottom: '10px' }}
                                 />
-                                <input
+                                {/* <input
                                     type="text"
                                     class="form-control"
                                     placeholder="Câu chuyện của bạn"
                                     style={{ marginBottom: '10px' }}
-                                />
+                                /> */}
                                 <button class="btn" type="submit" className='text-white bg-[#686d74] uppercase px-[10px] py-[10px] my-[10px]'>
                                     Đăng ký
                                 </button>
