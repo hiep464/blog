@@ -1,56 +1,58 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
+import '../../styles/global.scss';
+
 
 function Footer() {
     return (
-        <footer style={{ backgroundColor: 'black', borderTop: '3px solid #84cf3f' }}>
-            <div class="container text-left" style={{ maxHeight: '1200px', paddingBottom: '30px' }}>
-                <div class="row text-white" style={{ padding: '24px 0 10px', borderBottom: '1px dashed white' }}>
-                    <div class="col">
+        <footer style={{ backgroundColor: 'black', borderTop: '3px solid #84cf3f' }} className='flex justify-center items-center'>
+            <div class="container text-left" style={{ maxHeight: '1200px', paddingBottom: '30px' }} className='w-full max-w-[1200px]'>
+                <div class="row text-white" style={{ padding: '24px 0 10px', borderBottom: '1px dashed white' }} className='flex-col md:flex-row text-white !grid  grid-cols-1 md:grid-cols-3'>
+                    <div className="px-[15px]">
                         <div class="card-body float-right">
-                            <h5 class="card-title" style={{ paddingBottom: '10px' }}>
+                            <div className='text-[16px] font-[700]' style={{ textTransform: "uppercase" }}>
                                 Thông tin liên hệ
-                            </h5>
+                            </div>
                             <hr />
-                            <p class="card-text">
-                                <div style={{ marginBottom: '10px' }}>
+                            <div className='' style={{ fontSize: '14px', fontWeight: '400' }}>
+                                <div style={{ marginBottom: '20px', marginTop: "20px", fontSize: '14px', fontWeight: '700' }}>
                                     <strong>Tư vấn tâm lý online</strong>
                                 </div>
-                                <div style={{ marginBottom: '10px' }}>Email: tuvanchuyenngoaitinh@gmail.com</div>
-                                <div>
+                                <div style={{ marginBottom: '20px' }}>Email: tuvanchuyenngoaitinh@gmail.com</div>
+                                <div style={{ lineHeight: '150%' }}>
                                     Luôn lắng nghe, đồng hành cùng bạn trong hành trình chữa lành những khổ đau, tìm lại
                                     niềm an vui trong cuộc sống.
                                 </div>
                                 <br />
-                            </p>
+                            </div>
                         </div>
                     </div>
-                    <div class="col">
+                    <div className="px-[15px]">
                         <div class="card-body">
-                            <h5 class="card-title" style={{ paddingBottom: '10px' }}>
+                            <div className='text-[16px] font-[700]' style={{ textTransform: "uppercase" }}>
                                 KẾT NỐI VỚI CHÚNG TÔI
-                            </h5>
+                            </div>
                             <hr />
                             <p class="card-text">
-                                <div style={{ marginBottom: '11px' }}>
+                                <div style={{ marginBottom: '20px', marginTop: '20px' }}>
                                     <span>Facebook</span>
                                 </div>
-                                <div style={{ marginBottom: '11px' }}>
+                                <div style={{ marginBottom: '20px' }}>
                                     <span>Tik tok</span>
                                 </div>
-                                <div style={{ marginBottom: '11px' }}>
+                                <div style={{ marginBottom: '20px' }}>
                                     <span>Instagram</span>
                                 </div>
-                                <div style={{ marginBottom: '11px' }}>
+                                <div style={{ marginBottom: '20px' }}>
                                     <span>Youtube</span>
                                 </div>
                             </p>
                         </div>
                     </div>
-                    <div class="col">
+                    <div className="px-[15px]">
                         <div class="card-body">
-                            <h5 class="card-title" style={{ paddingBottom: '10px' }}>
+                            <div className='text-[16px] font-[700]' style={{ textTransform: "uppercase" }}>
                                 ĐĂNG KÝ TƯ VẤN
-                            </h5>
+                            </div>
                             <hr />
                             <p class="card-text">
                                 <input
@@ -77,7 +79,7 @@ function Footer() {
                                     placeholder="Câu chuyện của bạn"
                                     style={{ marginBottom: '10px' }}
                                 />
-                                <button class="btn btn-outline-success" type="submit">
+                                <button class="btn" type="submit" className='text-white bg-[#686d74] uppercase px-[10px] py-[10px] my-[10px]'>
                                     Đăng ký
                                 </button>
                             </p>
