@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import logo from '../../acess/avartar.png';
@@ -31,21 +31,46 @@ function Header() {
     ]
 
     const [search, setSearch] = useState("")
-    const [showMenu, setShowMenu] = useState(false)
-
+    const [showMenu, setShowMenu] = useState(false)  //show menu mobile
+    const [show, setShow] = useState(1); //show header when scroll
 
     let data = useLocation();
     const navigate = useNavigate()
 
-
     const handleChangeSearch = () => {
-        console.log("search", search);
         if (!search) {
             navigate(`/home`)
         } else {
             navigate(`/category/${search}`)
         }
     }
+
+
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 200 && window.scrollY < 500 && show !== 2) {
+                setShow(2);
+            } else if (window.scrollY >= 500 && show !== 3) {
+                setShow(3);
+            }
+            else {
+                setShow(1);
+                if (show !== 1) {
+                    setShow(1);
+                }
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
+
+
 
     return (
         <header
@@ -57,6 +82,7 @@ function Header() {
                 justifyContent: 'center',
                 flexDirection: 'column',
             }}
+            className={`home-header ${show === 1 ? "home-header" : (show === 3 ? "home-header--show" : "home-header--hidden")} z-50`}
         >
             <div style={{ display: 'flex', alignItems: 'center' }} className='xl:w-[1200px] relative w-full md:h-[100px] justify-center'>
                 <div className='flex flex-col justify-center items-center !w-full md:!w-auto px-[20px]  md:pr-0'>
@@ -114,16 +140,15 @@ function Header() {
             <div
                 style={{
                     width: '100%',
-                    height: '109px',
+                    // height: '109px',
                     display: 'flex',
                     justifyContent: 'center',
                     backgroundColor: 'black',
                     alignItems: 'center',
-                    paddingBottom: '20px',
                 }}
-                className='!hidden md:!flex'
+                className='!hidden md:!flex h-fit'
             >
-                <div class="input-group mb-3" style={{ width: '460px' }} className='!flex'>
+                <div class="input-group mb-3" style={{ width: '460px' }} className={`${show === 3 ? "!hidden" : "!flex !py-[20px]"}`}>
                     <input
                         type="text"
                         class="form-control"

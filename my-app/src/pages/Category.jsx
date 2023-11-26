@@ -146,6 +146,26 @@ function Category() {
                                             <button className='text-[10px] md:text-[16px] mt-[10px] md:mt-[22px] px-[5px] md:px-[15px] py-[5px] md:py-[10px] bg-black text-white'>View more</button>
                                         </div>
                                     </div>
+                                    <div className='w-full flex row-auto mb-[4%]'>
+                                        <img src={item1} alt='' className='w-[30%] md:w-[20%] object-contain h-max  border-[4px] border-solid border-[#eaeaea]'></img>
+                                        <div className='w-[70%] md:w-[80%] flex flex-col justify-start items-start ml-[20px]'>
+                                            <div className='mb-[3px] text-[14px] md:text-[18px] font-[600] text-2-line'>Chồng ngoại tình nhưng lại trách vợ không đủ hiền đức, phản ứng của người vợ khiến nhiều người ngán ngẩm ngán ngẩm</div>
+                                            <div className='text-[12px] md:text-[14px] font-[400] text-2-line'>
+                                                Nhiều người nói, muốn biết đàn ông thật lòng đến đâu hãy đợi cho đến khi anh ta có mọi thứ trong tay, vì nhiều người đàn ông dễ thay lòng lúc giàu sang.  Tiểu Hứa và vợ là Tiểu Lưu (sống ở Trung Quốc) bên nhau khi cả hai không có gì trong tay. Nhiều người nói, muốn biết đàn ông thật lòng đến đâu hãy đợi cho đến khi anh ta có mọi thứ trong tay, vì nhiều người đàn ông dễ thay lòng lúc giàu sang.  Tiểu Hứa và vợ là Tiểu Lưu (sống ở Trung Quốc) bên nhau khi cả hai không có gì trong tay.
+                                            </div>
+                                            <button className='text-[10px] md:text-[16px] mt-[10px] md:mt-[22px] px-[5px] md:px-[15px] py-[5px] md:py-[10px] bg-black text-white'>View more</button>
+                                        </div>
+                                    </div>
+                                    <div className='w-full flex row-auto mb-[4%]'>
+                                        <img src={item1} alt='' className='w-[30%] md:w-[20%] object-contain h-max  border-[4px] border-solid border-[#eaeaea]'></img>
+                                        <div className='w-[70%] md:w-[80%] flex flex-col justify-start items-start ml-[20px]'>
+                                            <div className='mb-[3px] text-[14px] md:text-[18px] font-[600] text-2-line'>Chồng ngoại tình nhưng lại trách vợ không đủ hiền đức, phản ứng của người vợ khiến nhiều người ngán ngẩm ngán ngẩm</div>
+                                            <div className='text-[12px] md:text-[14px] font-[400] text-2-line'>
+                                                Nhiều người nói, muốn biết đàn ông thật lòng đến đâu hãy đợi cho đến khi anh ta có mọi thứ trong tay, vì nhiều người đàn ông dễ thay lòng lúc giàu sang.  Tiểu Hứa và vợ là Tiểu Lưu (sống ở Trung Quốc) bên nhau khi cả hai không có gì trong tay. Nhiều người nói, muốn biết đàn ông thật lòng đến đâu hãy đợi cho đến khi anh ta có mọi thứ trong tay, vì nhiều người đàn ông dễ thay lòng lúc giàu sang.  Tiểu Hứa và vợ là Tiểu Lưu (sống ở Trung Quốc) bên nhau khi cả hai không có gì trong tay.
+                                            </div>
+                                            <button className='text-[10px] md:text-[16px] mt-[10px] md:mt-[22px] px-[5px] md:px-[15px] py-[5px] md:py-[10px] bg-black text-white'>View more</button>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="w-full ui-sortable-handle cursor-move flex justify-end items-end">
                                     <div class="box-tools pull-right">

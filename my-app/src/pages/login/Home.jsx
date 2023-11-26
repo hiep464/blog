@@ -11,6 +11,7 @@ import { Link } from 'react-router-dom';
 import '../../styles/global.scss';
 
 function Home() {
+
     return (
         <main className='bg-black'>
             <div className="flex flex-col justify-centera items-center">
@@ -185,7 +186,9 @@ function Home() {
                             <div className='text-[white] text-[24px] font-[400] pb-[20px]'>CHUYỆN CHỒNG NGOẠI TÌNH</div>
                             <div className='flex flex-col md:flex-row'>
                                 <div className='w-full flex flex-col justify-center items-center mb-[40px] md:mb-0 md:mr-[3%]'>
-                                    <img className='' src={section31} alt=''></img>
+                                    <div className='overflow-hidden '>
+                                        <img src={section31} className="hover:scale-110 transition-all duration-[300ms] w-full object-cover" alt="..." />
+                                    </div>
                                     <div className='text-white ml-[10px] mt-[5px]'>
                                         <div className='text-[17px] font-[500] py-[10px] text-center'>Điều kì diệu của một cặp đôi suýt ly hôn vì “cơn say nắng” của vợ với đồng nghiệp</div>
                                         <div className='text-[14px] text-[#c6c6c6] font-[400] text-5-line'>“Làn gió lạ” chốn công sở Đó là vào khoảng năm 2003, khi tôi 28 tuổi và có mặt ở New York để tiếp xúc với đại diện các chi nhánh của công ty tôi. Lần đầu Andreas xuất hiện ở sảnh khách sạn để đón tôi tới văn phòng, tôi đã cảm thấy anh</div>
@@ -203,7 +206,10 @@ function Home() {
 
                         <div className='!grid grid-cols-1 md:grid-cols-2 row w-full'>
                             <div className='flex flex-row justify-center items-center pb-[20px]'>
-                                <img className='w-[50%]' src={section31} alt="..." />
+                                <div className='overflow-hidden w-[50%]'>
+                                    <img src={section31} className="hover:scale-110 transition-all duration-[300ms] w-full object-cover" alt="..." />
+                                </div>
+                                {/* <img className='w-[50%]' src={section31} alt="..." /> */}
                                 <div class="pl-[10px] w-[50%] card-text text-[15px] font-[500] text-white leading-[150%] text-left px-[10] py-[10px]">
                                     Chồng mất sớm, tôi nhận con nuôi nhưng khi thằng bé lớn tôi phát hiện bí mật động
                                     trời
@@ -237,7 +243,9 @@ function Home() {
                         <div class="w-full h-[2px] bg-[#AEFE9D] my-[20px]" ></div>
                         <div>
                             <div className='flex flex-row justify-center items-start mb-[15px]'>
-                                <img className='w-[33%] border-[3px] border-solid border-[white]' src={section31} alt="..." />
+                                <div className='overflow-hidden w-[33%]'>
+                                    <img src={section31} className="hover:scale-110 transition-all duration-[300ms] w-full object-cover border-[3px] border-solid border-[white]" alt="..." />
+                                </div>
                                 <div className='pl-[10px] w-[66%]'>
                                     <div class="text-[#E5F113]  card-text text-[14px] font-[400] leading-[120%] text-left">
                                         6 điều em phải nhớ sau khi chia tay anh
@@ -338,7 +346,9 @@ function Home() {
                     <div className='text-[24px] text-[#99cc00] font-[700] mb-[20px] md:mb-[6px]'>TẢN MẠN TÌNH YÊU</div>
                     <div className='flex flex-col md:flex-row'>
                         <div className='w-full flex flex-col justify-center items-center pb-[30px] md:pb-0 md:mr-[3%]'>
-                            <img className='' src={item2} alt=''></img>
+                            <div className='overflow-hidden '>
+                                <img src={item2} className="hover:scale-110 transition-all duration-[300ms] w-full object-cover" alt="..." />
+                            </div>
                             <div className='text-white ml-[10px] mt-[5px]'>
                                 <div className='text-[17px] font-[500] py-[10px] text-center'>Điều kì diệu của một cặp đôi suýt ly hôn vì “cơn say nắng” của vợ với đồng nghiệp</div>
                                 <div className='text-[14px] text-[#c6c6c6] font-[400] text-5-line'>“Làn gió lạ” chốn công sở Đó là vào khoảng năm 2003, khi tôi 28 tuổi và có mặt ở New York để tiếp xúc với đại diện các chi nhánh của công ty tôi. Lần đầu Andreas xuất hiện ở sảnh khách sạn để đón tôi tới văn phòng, tôi đã cảm thấy anh</div>

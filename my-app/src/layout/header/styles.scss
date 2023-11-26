@@ -28,3 +28,29 @@
     color           : black !important;
     font-weight     : 700;
 }
+
+.home-header {
+    display: flex !important;
+}
+
+.home-header--show {
+    display: flex !important;
+}
+
+.home-header--hidden {
+    display: flex !important;
+}
+
+@media only screen and (min-width: 600px) {
+    .home-header--show {
+        display   : flex;
+        position  : fixed;
+        transition: transform 0.8s ease-out;
+        transform : translateY(0);
+    }
+
+    .home-header--hidden {
+        transition: transform 0.8s ease-out;
+        transform : translateY(-100%);
+    }
+}
