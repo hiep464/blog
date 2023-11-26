@@ -1,19 +1,30 @@
 .header-btn {
-    padding: 16px 20px;
-    font-size: 16px;
-    font-weight: 500;
-    border: none;
+    padding         : 16px 20px;
+    font-size       : 16px;
+    font-weight     : 500;
+    border          : none;
     background-color: #001219;
-    color: white;
-    cursor: pointer;
+    color           : white;
+    cursor          : pointer;
 
     &:hover {
         background-color: white;
-        color: #001219;
+        color           : #001219;
     }
 }
 
+.header-btn {
+    color  : white !important;
+    cursor : pointer;
+    padding: 3px 15px !important;
+}
+
+.header-btn:hover {
+    color: black !important;
+}
+
 .header-btn-active {
-    background-color: white;
-    color: #001219;
+    background-color: white !important;
+    color           : black !important;
+    font-weight     : 700;
 }

@@ -1,9 +1,52 @@
+import React, { useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import logo from '../../acess/avartar.png';
-import './styles.scss';
+import threebar from '../../acess/svg/threebars.svg';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-
+import './styles.scss';
 function Header() {
+    const HomeRoutesConfig = [
+        {
+            label: 'Home',
+            route: '/home',
+            default: true
+        },
+        {
+            label: 'Chuyện chồng ngoại tình',
+            route: '/category/husband',
+        },
+        {
+            label: 'Chuyện vợ ngoại tình',
+            route: '/category/wife',
+        },
+        {
+            label: 'Tản mạn tình yêu',
+            route: '/category/love',
+        },
+        {
+            label: 'Liên hệ',
+            route: '/contact',
+        },
+    ]
+
+    const [search, setSearch] = useState("")
+    const [showMenu, setShowMenu] = useState(false)
+
+
+    let data = useLocation();
+    const navigate = useNavigate()
+
+
+    const handleChangeSearch = () => {
+        console.log("search", search);
+        if (!search) {
+            navigate(`/home`)
+        } else {
+            navigate(`/category/${search}`)
+        }
+    }
+
     return (
         <header
             style={{
@@ -15,26 +58,58 @@ function Header() {
                 flexDirection: 'column',
             }}
         >
-            <div style={{ width: '1200px', display: 'flex', alignItems: 'center', height: '100px' }}>
-                <div
-                    style={{
-                        width: '170px',
-                        margin: '0 15px',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                    }}
-                >
-                    <img style={{ height: '100px', width: '100px' }} src={logo} alt="#" />
+            <div style={{ display: 'flex', alignItems: 'center' }} className='xl:w-[1200px] relative w-full md:h-[100px] justify-center'>
+                <div className='flex flex-col justify-center items-center !w-full md:!w-auto px-[20px]  md:pr-0'>
+                    <div
+                        style={{
+                            margin: '0 15px',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                        }}
+                        className='w-[100px] xl:w-[170px]'
+                    >
+                        <img style={{ height: '100px', width: '100px' }} src={logo} alt="#" />
+                    </div>
+                    <div class="input-group" className='flex md:hidden w-full mb-[30px]'>
+                        <input
+                            type="text"
+                            class="form-control"
+                            placeholder="search here"
+                            aria-label="search here"
+                            aria-describedby="button-addon2"
+                            onChange={(e) => setSearch(e.target.value)}
+                            className='h-[34px] p-[12px] w-full'
+                        />
+                        <button class="btn btn-outline-secondary text-white" type="button" id="button-addon2" style={{ backgroundColor: 'rgb(90, 136, 202)' }}
+                            onClick={handleChangeSearch} className='h-[34px] px-[12px]'
+                        >
+                            <span>search</span>
+                        </button>
+                    </div>
                 </div>
-                <nav style={{ padding: '0 15px' }}>
-                    <button className="header-btn header-btn-active">HOME</button>
-                    <button className="header-btn">Về chúng tôi</button>
-                    <button className="header-btn">Chuyện chồng ngoại tình</button>
-                    <button className="header-btn">Chuyện vợ ngoại tình</button>
-                    <button className="header-btn">Tản mạn tình yêu</button>
-                    <button className="header-btn">Liên hệ</button>
+
+                <nav style={{ padding: '0 15px' }} className='flex-row justify-between items-center w-full hidden md:flex'>
+                    {HomeRoutesConfig.map(item => (
+                        <Link scroll={true} key={item.route} className={`uppercase header-btn no-underline text-xl md:!text-[8px] lg:!text-[12px]  xl:!text-[14px] font-[700] !px-[15px] lg:!px-[18px] ${data.pathname.includes(item.route) || (data.pathname.includes("/home") && item.default) ? 'header-btn-active' : ''}`} to={`${item.route}`}>{item.label}
+                        </Link>
+                    ))}
                 </nav>
+                <div class="btn-group !absolute right-[30px] top-[30px] !flex md:!hidden">
+                    <button type="button" className='border-[1px] border-solid border-white p-[12px]' onClick={() => setShowMenu(!showMenu)}>
+                        <img src={threebar} className='!w-[14px] !h-[14px]' alt=''></img>
+                    </button>
+
+                </div>
+                <div className='absolute top-[90px] w-full px-[20px] right-0 z-10 !flex md:!hidden'>
+                    <div class="dropdown-menu pull-right" role="menu" className={`w-full flex flex-col bg-white text-black ${showMenu ? "flex" : 'hidden'}`}>
+                        <Link onClick={() => setShowMenu(!showMenu)} to={'/home'} className='text-black no-underline w-full px-[15px] py-[8px] border-b-[1px] border-solid border-[#e5e5e5] uppercase text-[14px]'>HOME</Link>
+                        <Link onClick={() => setShowMenu(!showMenu)} to={'/category/husband'} className='text-black no-underline  w-full px-[15px] py-[8px] border-b-[1px] border-solid border-[#e5e5e5] uppercase text-[14px]'>Chuyện chồng ngoại tình</Link>
+                        <Link onClick={() => setShowMenu(!showMenu)} to={'/category/wife'} className='text-black no-underline  w-full px-[15px] py-[8px] border-b-[1px] border-solid border-[#e5e5e5] uppercase text-[14px]'>Chuyện vợ ngoại tình</Link>
+                        <Link onClick={() => setShowMenu(!showMenu)} to={'/category/love'} className='text-black no-underline  w-full px-[15px] py-[8px] border-b-[1px] border-solid border-[#e5e5e5] uppercase text-[14px]'>Tản mạn tình yêu</Link>
+                        <Link onClick={() => setShowMenu(!showMenu)} to={'/contact'} className='text-black no-underline  w-full px-[15px] py-[8px] border-b-[1px] border-solid border-[#e5e5e5] uppercase text-[14px]'>Liên hệ</Link>
+                    </div>
+                </div>
             </div>
             <div
                 style={{
@@ -46,36 +121,25 @@ function Header() {
                     alignItems: 'center',
                     paddingBottom: '20px',
                 }}
+                className='!hidden md:!flex'
             >
-                {/* <input
-                    style={{ padding: '0 10px', width: '438px', height: '32px', border: 'none', outline: 'none' }}
-                    type="text"
-                    placeholder="search here"
-                />
-                <button
-                    style={{
-                        height: '32px',
-                        padding: '6px 12px',
-                        border: 'none',
-                        backgroundColor: 'rgb(90, 136, 202)',
-                    }}
-                >
-                    search
-                </button> */}
-                <div class="input-group mb-3" style={{width: '460px'}}>
+                <div class="input-group mb-3" style={{ width: '460px' }} className='!flex'>
                     <input
                         type="text"
                         class="form-control"
                         placeholder="search here"
                         aria-label="search here"
                         aria-describedby="button-addon2"
+                        onChange={(e) => setSearch(e.target.value)}
                     />
-                    <button class="btn btn-outline-secondary text-white" type="button" id="button-addon2" style={{backgroundColor: 'rgb(90, 136, 202)'}}>
+                    <button class="btn btn-outline-secondary text-white" type="button" id="button-addon2" style={{ backgroundColor: 'rgb(90, 136, 202)' }}
+                        onClick={handleChangeSearch}
+                    >
                         <span>search</span>
                     </button>
                 </div>
             </div>
-        </header>
+        </header >
     );
 }
 
