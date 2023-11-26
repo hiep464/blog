@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
 function Detail() {
@@ -6,7 +6,6 @@ function Detail() {
     let location = useLocation();
 
     useEffect(() => {
-        console.log("location", location);
         const parts = location.pathname.split('/');
         if (parts[2] && parts[2] !== "husband" && parts[2] !== "wife" && parts[2] !== "love") {
         }

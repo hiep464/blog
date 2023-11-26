@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import Home from "../acess/svg/home.svg";
 
@@ -8,10 +8,24 @@ import { Link } from 'react-router-dom';
 function Category() {
 
     let location = useLocation();
-    console.log("data", location);
     const [title, setTitle] = useState("CHUYỆN CHỒNG NGOẠI TÌNH")
     const [keySearch, setKeySearch] = useState("")
 
+    const [numPage, setNumPage] = useState(1)
+    const maxLenth = useRef(4)
+
+    const handleChangePage = (num) => {
+        if (num && num !== "-" && num !== "+") {
+            setNumPage(num)
+        } else {
+            if (num === "-") {
+                setNumPage(numPage !== 1 ? (parseInt(numPage) - 1) : numPage)
+            } else {
+                setNumPage(numPage < maxLenth.current ? (parseInt(numPage) + 1) : numPage)
+            }
+
+        }
+    }
     useEffect(() => {
         if (location.pathname.includes("husband")) {
             setTitle("CHUYỆN CHỒNG NGOẠI TÌNH")
@@ -28,14 +42,14 @@ function Category() {
             setTitle("CHUYỆN NGOẠI TÌNH NỔI BẬT")
         }
 
-        console.log("location", location);
-        const parts = location.pathname.split('/');
+        const parts = decodeURI(location.pathname).split('/');
         setKeySearch("")
         if (parts[2] && parts[2] !== "husband" && parts[2] !== "wife" && parts[2] !== "love") {
             setKeySearch(parts[2])
             setTitle("Search Results")
         }
     }, [location])
+
 
 
     return (
@@ -86,7 +100,9 @@ function Category() {
                                 <div className='py-[30px] text-[20px] md:text-[24px] font-[700] uppercase'>{keySearch ? `SEARCH RESULTS FOR: ${keySearch}` : `Chuyên mục: ${title}`}</div>
                                 <div className='w-full'>
                                     <div className='w-full flex row-auto mb-[4%]'>
-                                        <img src={item1} alt='' className='w-[30%] md:w-[20%] object-contain h-max  border-[4px] border-solid border-[#eaeaea]'></img>
+                                        <div className='overflow-hidden w-[30%] md:w-[20%] '>
+                                            <img src={item1} alt='' className='hover:scale-110 transition-all duration-[300ms] w-full object-contain h-max  border-[4px] border-solid border-[#eaeaea]'></img>
+                                        </div>
                                         <div className='w-[70%] md:w-[80%] flex flex-col justify-start items-start ml-[20px]'>
                                             <div className='mb-[3px] text-[14px] md:text-[18px] font-[600] text-2-line'>Chồng ngoại tình nhưng lại trách vợ không đủ hiền đức, phản ứng của người vợ khiến nhiều người ngán ngẩm ngán ngẩm</div>
                                             <div className='text-[12px] md:text-[14px] font-[400] text-2-line'>
@@ -131,12 +147,32 @@ function Category() {
                                         </div>
                                     </div>
                                 </div>
+                                <div class="w-full ui-sortable-handle cursor-move flex justify-end items-end">
+                                    <div class="box-tools pull-right">
+                                        <ul class="pagination pagination-sm inline text-[12px]">
+                                            <li><Link to="#" className='py-[5px] px-[10px] border-[1px] border-solid border-[#ddd] text-[black] no-underline flex justify-center items-center hover:bg-black hover:text-white' onClick={() => handleChangePage('-')}>«</Link></li>
+                                            <li><Link to="#" className={`py-[5px] px-[10px] border-[1px] border-solid border-[#ddd] text-[black] no-underline flex justify-center items-center hover:bg-black hover:text-white ${numPage === 1 ? "btn-active-page" : ""}`}
+                                                onClick={() => handleChangePage(1)}
+                                            >1</Link></li>
+                                            <li><Link to="#" className={`py-[5px] px-[10px] border-[1px] border-solid border-[#ddd] text-[black] no-underline flex justify-center items-center hover:bg-black hover:text-white ${numPage === 2 ? "btn-active-page" : ""}`}
+                                                onClick={() => handleChangePage(2)}
+                                            >2</Link></li>
+                                            <li><Link to="#" className={`py-[5px] px-[10px] border-[1px] border-solid border-[#ddd] text-[black] no-underline flex justify-center items-center hover:bg-black hover:text-white ${numPage === 3 ? "btn-active-page" : ""}`}
+                                                onClick={() => handleChangePage(3)}
+                                            >3</Link></li>
+                                            <li><Link to="#" className={`py-[5px] px-[10px] border-[1px] border-solid border-[#ddd] text-[black] no-underline flex justify-center items-center hover:bg-black hover:text-white ${numPage === 4 ? "btn-active-page" : ""}`}
+                                                onClick={() => handleChangePage(4)}
+                                            >4</Link></li>
+                                            <li><Link to="#" className={`py-[5px] px-[10px] border-[1px] border-solid border-[#ddd] text-[black] no-underline flex justify-center items-center hover:bg-black hover:text-white`} onClick={() => handleChangePage('+')}>»</Link></li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </main>
+        </main >
     );
 }
 
