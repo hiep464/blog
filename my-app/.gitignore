@@ -7,7 +7,7 @@
 
 # testing
 /coverage
-
+package-log.json
 # production
 # /build
 
