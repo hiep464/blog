@@ -4,7 +4,7 @@ import '../../styles/global.scss';
 
 function Footer() {
     return (
-        <footer style={{ backgroundColor: 'black', borderTop: '3px solid #84cf3f' }} className='flex justify-center items-center'>
+        <footer style={{ backgroundColor: '#002664', borderTop: '3px solid #84cf3f' }} className='flex justify-center items-center'>
             <div class="container text-left" style={{ maxHeight: '1200px', paddingBottom: '30px' }} className='w-full max-w-[1200px]'>
                 <div class="row text-white" style={{ padding: '24px 0 10px', borderBottom: '1px dashed white' }} className='flex-col md:flex-row text-white !grid  grid-cols-1 md:grid-cols-3'>
                     <div className="px-[15px]">
@@ -34,16 +34,16 @@ function Footer() {
                             <hr />
                             <p class="card-text">
                                 <div style={{ marginBottom: '20px', marginTop: '20px' }}>
-                                    <span>Facebook</span>
+                                    <a href='https://www.facebook.com/dao.vanthu.58'>Facebook</a>
                                 </div>
                                 <div style={{ marginBottom: '20px' }}>
-                                    <span>Tik tok</span>
+                                    <a href='https://www.tiktok.com/@kakojp?_t=8hi8KUNcgGA&_r=1'>Tik tok</a>
                                 </div>
                                 <div style={{ marginBottom: '20px' }}>
-                                    <span>Instagram</span>
+                                    <a href={`mailto:srsgogakukyositsu@gmail.com`}>Email</a>
                                 </div>
                                 <div style={{ marginBottom: '20px' }}>
-                                    <span>Youtube</span>
+                                    <a href='https://www.tiktok.com/@kakojp?_t=8hi8KUNcgGA&_r=1'>Youtube</a>
                                 </div>
                             </p>
                         </div>

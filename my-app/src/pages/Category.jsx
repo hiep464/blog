@@ -5,6 +5,8 @@ import Home from "../acess/svg/home.svg";
 import item1 from '../acess/item1.jpg';
 import { Link } from 'react-router-dom';
 
+import './styles.scss'
+
 
 function Category() {
 
@@ -39,10 +41,13 @@ function Category() {
         else if (location.pathname.includes("translate")) {
             setTitle("PHIÊN DỊCH, DỊCH THUẬT NHẬT-VIỆT")
         }
+        else if (location.pathname.includes("course")) {
+            setTitle("KHÓA HỌC")
+        }
 
         const parts = decodeURI(location.pathname).split('/');
         setKeySearch("")
-        if (parts[2] && parts[2] !== "life_coach" && parts[2] !== "pointing_hand" && parts[2] !== "education" && parts[2] !== "translate") {
+        if (parts[2] && parts[2] !== "life_coach" && parts[2] !== "pointing_hand" && parts[2] !== "education" && parts[2] !== "translate" && parts[2] !== "course") {
             setKeySearch(parts[2])
             setTitle("Search Results")
         }
@@ -107,7 +112,7 @@ function Category() {
                                                 Nhiều người nói, muốn biết đàn ông thật lòng đến đâu hãy đợi cho đến khi anh ta có mọi thứ trong tay, vì nhiều người đàn ông dễ thay lòng lúc giàu sang.  Tiểu Hứa và vợ là Tiểu Lưu (sống ở Trung Quốc) bên nhau khi cả hai không có gì trong tay. Nhiều người nói, muốn biết đàn ông thật lòng đến đâu hãy đợi cho đến khi anh ta có mọi thứ trong tay, vì nhiều người đàn ông dễ thay lòng lúc giàu sang.  Tiểu Hứa và vợ là Tiểu Lưu (sống ở Trung Quốc) bên nhau khi cả hai không có gì trong tay.
                                             </div>
                                             <Link to={"/detail/2"}>
-                                                <button className='text-[10px] md:text-[16px] mt-[10px] md:mt-[22px] px-[5px] md:px-[15px] py-[5px] md:py-[10px] bg-black text-white'>
+                                                <button className='text-[10px] md:text-[16px] mt-[10px] md:mt-[22px] px-[5px] md:px-[15px] py-[5px] md:py-[10px] bg-[#082C70] text-white'>
                                                     View more
                                                 </button>
                                             </Link>
@@ -168,20 +173,20 @@ function Category() {
                                 <div class="w-full ui-sortable-handle cursor-move flex justify-end items-end">
                                     <div class="box-tools pull-right">
                                         <ul class="pagination pagination-sm inline text-[12px]">
-                                            <li><Link to="#" className='py-[5px] px-[10px] border-[1px] border-solid border-[#ddd] text-[black] no-underline flex justify-center items-center hover:bg-black hover:text-white' onClick={() => handleChangePage('-')}>«</Link></li>
-                                            <li><Link to="#" className={`py-[5px] px-[10px] border-[1px] border-solid border-[#ddd] text-[black] no-underline flex justify-center items-center hover:bg-black hover:text-white ${numPage === 1 ? "btn-active-page" : ""}`}
+                                            <li><Link to="#" className='py-[5px] px-[10px] border-[1px] border-solid border-[#ddd] text-[black] no-underline flex justify-center items-center hover:bg-[#082C70] hover:text-white' onClick={() => handleChangePage('-')}>«</Link></li>
+                                            <li><Link to="#" className={`py-[5px] px-[10px] border-[1px] border-solid border-[#ddd] text-[black] no-underline flex justify-center items-center hover:bg-[#082C70] hover:text-white ${numPage === 1 ? "btn-active-page" : ""}`}
                                                 onClick={() => handleChangePage(1)}
                                             >1</Link></li>
-                                            <li><Link to="#" className={`py-[5px] px-[10px] border-[1px] border-solid border-[#ddd] text-[black] no-underline flex justify-center items-center hover:bg-black hover:text-white ${numPage === 2 ? "btn-active-page" : ""}`}
+                                            <li><Link to="#" className={`py-[5px] px-[10px] border-[1px] border-solid border-[#ddd] text-[black] no-underline flex justify-center items-center hover:bg-[#082C70] hover:text-white ${numPage === 2 ? "btn-active-page" : ""}`}
                                                 onClick={() => handleChangePage(2)}
                                             >2</Link></li>
-                                            <li><Link to="#" className={`py-[5px] px-[10px] border-[1px] border-solid border-[#ddd] text-[black] no-underline flex justify-center items-center hover:bg-black hover:text-white ${numPage === 3 ? "btn-active-page" : ""}`}
+                                            <li><Link to="#" className={`py-[5px] px-[10px] border-[1px] border-solid border-[#ddd] text-[black] no-underline flex justify-center items-center hover:bg-[#082C70] hover:text-white ${numPage === 3 ? "btn-active-page" : ""}`}
                                                 onClick={() => handleChangePage(3)}
                                             >3</Link></li>
-                                            <li><Link to="#" className={`py-[5px] px-[10px] border-[1px] border-solid border-[#ddd] text-[black] no-underline flex justify-center items-center hover:bg-black hover:text-white ${numPage === 4 ? "btn-active-page" : ""}`}
+                                            <li><Link to="#" className={`py-[5px] px-[10px] border-[1px] border-solid border-[#ddd] text-[black] no-underline flex justify-center items-center hover:bg-[#082C70] hover:text-white ${numPage === 4 ? "btn-active-page" : ""}`}
                                                 onClick={() => handleChangePage(4)}
                                             >4</Link></li>
-                                            <li><Link to="#" className={`py-[5px] px-[10px] border-[1px] border-solid border-[#ddd] text-[black] no-underline flex justify-center items-center hover:bg-black hover:text-white`} onClick={() => handleChangePage('+')}>»</Link></li>
+                                            <li><Link to="#" className={`py-[5px] px-[10px] border-[1px] border-solid border-[#ddd] text-[black] no-underline flex justify-center items-center hover:bg-[#082C70] hover:text-white`} onClick={() => handleChangePage('+')}>»</Link></li>
                                         </ul>
                                     </div>
                                 </div>

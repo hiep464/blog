@@ -1,16 +1,19 @@
-.header-btn {
-    padding         : 16px 20px;
-    font-size       : 16px;
-    font-weight     : 500;
-    border          : none;
-    background-color: #001219;
-    color           : white;
-    cursor          : pointer;
+// .header-btn {
+//     padding         : 16px 20px;
+//     font-size       : 16px;
+//     font-weight     : 500;
+//     border          : none;
+//     background-color: #001219;
+//     color           : white;
+//     cursor          : pointer;
 
-    &:hover {
-        background-color: white;
-        color           : #001219;
-    }
+//     &:hover {
+//         background-color: white;
+//         color           : #001219;
+//     }
+// }
+.btn-contact{
+    background-color: #BF211A;
 }
 
 .header-btn {
@@ -20,12 +23,12 @@
 }
 
 .header-btn:hover {
-    color: black !important;
+    color: #F0CE88 !important;
 }
 
 .header-btn-active {
-    background-color: white !important;
-    color           : black !important;
+    // background-color: white !important;
+    color           : #F0CE88 !important;
     font-weight     : 700;
 }
 

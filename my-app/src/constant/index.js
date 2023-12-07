@@ -1,0 +1,1 @@
+export const baseApi = 'https://kakojp.jp/api'
