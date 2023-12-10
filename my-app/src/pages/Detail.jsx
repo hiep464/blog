@@ -20,7 +20,7 @@ function Detail() {
                         return newSrc;
                     },
                 );
-
+                console.log(modifiedContent)
                 setContent(modifiedContent);
             })
             .catch((err) => {

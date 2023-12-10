@@ -10,9 +10,10 @@ import axios from 'axios';
 
 import { baseApi, baseImage } from '../constant';
 
-function Category() {
+function Search() {
     let location = useLocation();
     const [title, setTitle] = useState('');
+    const [keySearch, setKeySearch] = useState('');
 
     const [numPage, setNumPage] = useState(1);
     // const maxLenth = useRef(4)
@@ -32,30 +33,15 @@ function Category() {
         }
     };
     useEffect(() => {
-        let category = '';
-        if (location.pathname.includes('life_coach')) {
-            setTitle('LIFE COACH');
-            category = 'LIFE_COACH';
-        } else if (location.pathname.includes('pointing_hand')) {
-            setTitle('cÁCH XEM CHỈ TAY');
-            category = 'HAND_POINTING';
-        } else if (location.pathname.includes('education')) {
-            setTitle('GIÁO DỤC TIẾNG NHẬT');
-            category = 'EDUCATION';
-        } else if (location.pathname.includes('translate')) {
-            setTitle('PHIÊN DỊCH, DỊCH THUẬT NHẬT-VIỆT');
-            category = 'TRANSLATE';
-        } else if (location.pathname.includes('course')) {
-            setTitle('KHÓA HỌC');
-            category = 'COURSE';
-        }
-        axios.get(`${baseApi}/blog/${category}/page`).then((res) => {
-            setMaxLenth(res.data.num_pages);
-            const numberArray = Array.from({ length: res.data.num_pages }, (_, index) => index + 1);
-            setPages(numberArray);
-        });
-        axios.get(`${baseApi}/blog/${category}/${numPage}`).then((res) => {
-            setData(res.data);
+        const parts = decodeURI(location.pathname).split('/');
+        setKeySearch(parts[2]);
+        setTitle('Search Results');
+        axios.get(`https://kakojp.jp/api/search?search=${parts[2]}`).then((res) => {
+            setData(res.data.results)
+            const pages_rs = res.data.count / 10 + 1
+            const numberArray = Array.from({ length: pages_rs }, (_, index) => index + 1);
+            setMaxLenth(pages_rs)
+            setPages(numberArray)
         });
     }, [location]);
 
@@ -74,14 +60,81 @@ function Category() {
                             </Link>
                         </div>
                         <div className="flex flex-col md:flex-row w-full">
-                            <div className={'w-full'}>
+                            <div className={`'w-full md:w-[25%]' w-[25%] mt-[30px] mr-[30px] h-fit`}>
+                                <div className=" border-[1px] border-solid border-[#eaeaea]">
+                                    <div className="bg-[#fbfbfb] px-[20px] py-[15px] text-[14px] font-[600] uppercase border-b-[1px] border-solid border-[#eaeaea]">
+                                        Bài viết mới
+                                    </div>
+                                    <div className="p-[20px]">
+                                        <div className="py-[5px]">6 điều em phải nhớ sau khi chia tay anh</div>
+                                        <div className="py-[5px]">Hôn nhân không như lúc yêu được đâu em à!</div>
+                                        <div className="py-[5px]">Đừng vì cô đơn rồi nắm tay một người!!</div>
+                                        <div className="py-[5px]">
+                                            Biết mình là “người thứ 3”, người phụ nữ vẫn lần lữa kéo dài cuộc tình tới 5
+                                            năm, lý do khiến ai nấy thương cảm
+                                        </div>
+                                        <div className="py-[5px]">
+                                            Nghẹn đắng tờ kết quả ADN, cái thai là con tôi nhưng tôi vẫn muốn ly hôn
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className=" border-[1px] border-solid border-[#eaeaea] mt-[20px]">
+                                    <div className="bg-[#fbfbfb] px-[20px] py-[15px] text-[14px] font-[600] uppercase border-b-[1px] border-solid border-[#eaeaea]">
+                                        Phản hồi gần đây
+                                    </div>
+                                    <div className="p-[20px]">
+                                        <div className="py-[5px]">6 điều em phải nhớ sau khi chia tay anh</div>
+                                    </div>
+                                </div>
+                                <div className=" border-[1px] border-solid border-[#eaeaea] mt-[20px]">
+                                    <div className="bg-[#fbfbfb] px-[20px] py-[15px] text-[14px] font-[600] uppercase border-b-[1px] border-solid border-[#eaeaea]">
+                                        Chuyên mục
+                                    </div>
+                                    <div className="p-[20px] flex flex-col">
+                                        <Link
+                                            className="py-[5px] text-[14px] font-[400] text-black no-underline"
+                                            to="/category/husband"
+                                        >
+                                            CHUYỆN CHỒNG NGOẠI TÌNH
+                                        </Link>
+                                        <Link
+                                            className="py-[5px] text-[14px] font-[400] text-black no-underline"
+                                            to="/category/new"
+                                        >
+                                            CHUYỆN NGOẠI TÌNH MỚI
+                                        </Link>
+                                        <Link
+                                            className="py-[5px] text-[14px] font-[400] text-black no-underline"
+                                            to="/category/outstanding"
+                                        >
+                                            CHUYỆN NGOẠI TÌNH NỔI BẬT
+                                        </Link>
+                                        <Link
+                                            className="py-[5px] text-[14px] font-[400] text-black no-underline"
+                                            to="/category/wife"
+                                        >
+                                            CHUYỆN VỢ NGOẠI TÌNH
+                                        </Link>
+                                        <Link
+                                            className="py-[5px] text-[14px] font-[400] text-black no-underline"
+                                            to="/category/love"
+                                        >
+                                            TẢN MẠN TÌNH YÊU
+                                        </Link>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className={`${keySearch ? 'ww-full md:w-[75%]' : 'w-full'}`}>
+                                <div className="py-[30px] text-[20px] md:text-[24px] font-[700] uppercase">
+                                    {keySearch ? `SEARCH RESULTS FOR: ${keySearch}` : `Chuyên mục: ${title}`}
+                                </div>
                                 <div className="w-full">
                                     {data.map((item, idx) => {
                                         return (
                                             <div key={idx} className="w-full flex row-auto mb-[4%]">
                                                 <div className="overflow-hidden w-[30%] md:w-[20%] ">
                                                     <img
-                                                        src={`${baseImage}${item.image}`}
+                                                        src={item.image}
                                                         alt=""
                                                         className="hover:scale-110 transition-all duration-[300ms] w-full object-contain h-max  border-[4px] border-solid border-[#eaeaea]"
                                                     ></img>
@@ -130,15 +183,6 @@ function Category() {
                                                     </li>
                                                 );
                                             })}
-                                            {/* <li><Link to="#" className={`py-[5px] px-[10px] border-[1px] border-solid border-[#ddd] text-[black] no-underline flex justify-center items-center hover:bg-[#082C70] hover:text-white ${numPage === 2 ? "btn-active-page" : ""}`}
-                                                onClick={() => handleChangePage(2)}
-                                            >2</Link></li>
-                                            <li><Link to="#" className={`py-[5px] px-[10px] border-[1px] border-solid border-[#ddd] text-[black] no-underline flex justify-center items-center hover:bg-[#082C70] hover:text-white ${numPage === 3 ? "btn-active-page" : ""}`}
-                                                onClick={() => handleChangePage(3)}
-                                            >3</Link></li>
-                                            <li><Link to="#" className={`py-[5px] px-[10px] border-[1px] border-solid border-[#ddd] text-[black] no-underline flex justify-center items-center hover:bg-[#082C70] hover:text-white ${numPage === 4 ? "btn-active-page" : ""}`}
-                                                onClick={() => handleChangePage(4)}
-                                            >4</Link></li> */}
                                             <li>
                                                 <Link
                                                     to="#"
@@ -160,4 +204,4 @@ function Category() {
     );
 }
 
-export default Category;
+export default Search;

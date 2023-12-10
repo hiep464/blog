@@ -53,7 +53,7 @@ function Header() {
         if (!search) {
             navigate(`/home`);
         } else {
-            navigate(`/category/${search}`);
+            navigate(`/search/${search}`);
         }
     };
 
@@ -94,6 +94,34 @@ function Header() {
                     <strong>Kakojp</strong> 合同会社
                 </span>
             </div>
+            <div class="btn-group !absolute right-[30px] top-[30px] !flex md:!hidden">
+                <button
+                    type="button"
+                    className="border-[1px] border-solid border-white p-[12px]"
+                    onClick={() => setShowMenu(!showMenu)}
+                >
+                    <img src={threebar} className="!w-[14px] !h-[14px] bg-[red]" alt=""></img>
+                </button>
+            </div>
+            <div className="absolute top-[90px] w-full px-[20px] right-0 z-10 !flex md:!hidden">
+                <div
+                    class="dropdown-menu pull-right"
+                    role="menu"
+                    className={`w-full flex flex-col bg-white text-black ${showMenu ? 'flex' : 'hidden'}`}
+                >
+                    {HomeRoutesConfig.map((item) => (
+                        <Link
+                            scroll={true}
+                            key={item.route}
+                            onClick={() => setShowMenu(!showMenu)}
+                            className="text-black no-underline  w-full px-[15px] py-[8px] border-b-[1px] border-solid border-[#e5e5e5] uppercase text-[14px]"
+                            to={`${item.route}`}
+                        >
+                            {item.label}
+                        </Link>
+                    ))}
+                </div>
+            </div>
             <header
                 style={{
                     backgroundColor: '#001219',
@@ -102,7 +130,7 @@ function Header() {
                     alignItems: 'center',
                     justifyContent: 'center',
                     flexDirection: 'column',
-                    backgroundColor: '#002664'
+                    backgroundColor: '#002664',
                 }}
                 className={`home-header ${
                     show === 1 ? 'home-header' : show === 3 ? 'home-header--show' : 'home-header--hidden'
@@ -112,8 +140,8 @@ function Header() {
                     style={{ display: 'flex', alignItems: 'center' }}
                     className="xl:w-[1200px] relative w-full md:h-[100px] justify-center"
                 >
-                    {/* <div className="flex flex-col justify-center items-center !w-full md:!w-auto px-[20px]  md:pr-0">
-                        <div class="input-group" className="flex md:hidden w-full mb-[30px]">
+                    <div className="flex flex-col justify-center items-center !w-full md:!w-auto px-[20px]  md:pr-0">
+                        <div class="input-group" className="flex md:hidden w-full mb-[30px] home-search">
                             <input
                                 type="text"
                                 class="form-control"
@@ -134,8 +162,8 @@ function Header() {
                                 <span>search</span>
                             </button>
                         </div>
-                    </div> */}
-    
+                    </div>
+
                     <nav
                         style={{ padding: '0 15px' }}
                         className="flex-row justify-between items-center w-full hidden md:flex"
@@ -145,23 +173,24 @@ function Header() {
                                 scroll={true}
                                 key={item.route}
                                 className={`uppercase header-btn no-underline text-xl md:!text-[8px] lg:!text-[12px]  xl:!text-[14px] font-[700] !px-[15px] lg:!px-[18px] ${
-                                    data.pathname.includes(item.route) || (data.pathname.includes('/home') && item.default)
+                                    data.pathname.includes(item.route) ||
+                                    (data.pathname.includes('/home') && item.default)
                                         ? 'header-btn-active'
                                         : ''
-                                } ${item.route === '/contact'? 'btn-contact': ''}`}
+                                } ${item.route === '/contact' ? 'btn-contact' : ''}`}
                                 to={`${item.route}`}
                             >
                                 {item.label}
                             </Link>
                         ))}
                     </nav>
-                    <div class="btn-group !absolute right-[30px] top-[30px] !flex md:!hidden">
+                    {/* <div class="btn-group !absolute right-[30px] top-[30px] !flex md:!hidden">
                         <button
                             type="button"
                             className="border-[1px] border-solid border-white p-[12px]"
                             onClick={() => setShowMenu(!showMenu)}
                         >
-                            <img src={threebar} className="!w-[14px] !h-[14px]" alt=""></img>
+                            <img src={threebar} className="!w-[14px] !h-[14px] bg-[red]" alt=""></img>
                         </button>
                     </div>
                     <div className="absolute top-[90px] w-full px-[20px] right-0 z-10 !flex md:!hidden">
@@ -170,12 +199,6 @@ function Header() {
                             role="menu"
                             className={`w-full flex flex-col bg-white text-black ${showMenu ? 'flex' : 'hidden'}`}
                         >
-                            {/* <Link onClick={() => setShowMenu(!showMenu)} to={'/home'} className='text-black no-underline w-full px-[15px] py-[8px] border-b-[1px] border-solid border-[#e5e5e5] uppercase text-[14px]'>HOME</Link>
-                            <Link onClick={() => setShowMenu(!showMenu)} to={'/category/husband'} className='text-black no-underline  w-full px-[15px] py-[8px] border-b-[1px] border-solid border-[#e5e5e5] uppercase text-[14px]'>Chuyện chồng ngoại tình</Link>
-                            <Link onClick={() => setShowMenu(!showMenu)} to={'/category/wife'} className='text-black no-underline  w-full px-[15px] py-[8px] border-b-[1px] border-solid border-[#e5e5e5] uppercase text-[14px]'>Chuyện vợ ngoại tình</Link>
-                            <Link onClick={() => setShowMenu(!showMenu)} to={'/category/love'} className='text-black no-underline  w-full px-[15px] py-[8px] border-b-[1px] border-solid border-[#e5e5e5] uppercase text-[14px]'>Tản mạn tình yêu</Link>
-                            <Link onClick={() => setShowMenu(!showMenu)} to={'/contact'} className='text-black no-underline  w-full px-[15px] py-[8px] border-b-[1px] border-solid border-[#e5e5e5] uppercase text-[14px]'>Liên hệ</Link>
-                            <Link onClick={() => setShowMenu(!showMenu)} to={'/contact'} className='text-black no-underline  w-full px-[15px] py-[8px] border-b-[1px] border-solid border-[#e5e5e5] uppercase text-[14px]'>Liên hệ</Link> */}
                             {HomeRoutesConfig.map((item) => (
                                 <Link
                                     scroll={true}
@@ -188,7 +211,7 @@ function Header() {
                                 </Link>
                             ))}
                         </div>
-                    </div>
+                    </div> */}
                 </div>
                 <div
                     style={{
@@ -202,7 +225,7 @@ function Header() {
                     className="!hidden md:!flex h-fit"
                 >
                     <div
-                        class="input-group mb-3"
+                        class="input-group mb-3 home-search"
                         style={{ width: '460px' }}
                         className={`${show === 3 ? '!hidden' : '!flex !py-[20px]'}`}
                     >

@@ -51,7 +51,7 @@ function Contact() {
                                                 placeholder="Câu chuyện của bạn"
                                                 style={{ marginBottom: '10px' }}
                                             /> */}
-                                            <button class="btn" type="submit" className='text-white bg-[black] uppercase px-[10px] py-[10px] my-[10px]'>
+                                            <button class="btn" type="submit" className='text-white bg-[#BF211A] uppercase px-[10px] py-[10px] my-[10px]'>
                                                 Đăng ký
                                             </button>
                                         </p>
