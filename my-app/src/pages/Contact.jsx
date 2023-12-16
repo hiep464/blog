@@ -57,8 +57,8 @@ function Contact() {
                                         </p>
                                     </div>
                                     <div className='w-full py-[30px] md:py-0'>
-                                        <div className='text-[16px] font-[700] mb-[10px]'>Tư vấn tâm lý online</div>
-                                        <div className='text-[14px]  mb-[10px]'>Email: tuvanchuyenngoaitinh@gmail.com</div>
+                                        <div className='text-[16px] font-[700] mb-[10px]'>Tư vấn tâm lý</div>
+                                        <div className='text-[14px]  mb-[10px]'>Email: srsgogakukyositsu@gmail.com</div>
                                         <div className='text-[14px] mb-[10px]'>
                                             Chủ đề: life coach , chia sẻ cách xem chỉ tay , phong thuỷ theo trường phái Nhật Bản, Giáo dục tiếng Nhật , phiên dịch dịch thuật tiếng Nhật , Viêt
                                         </div>

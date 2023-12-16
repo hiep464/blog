@@ -7,7 +7,8 @@ import youtube from '../../acess/ytb.png';
 function Footer() {
     return (
         <footer
-            style={{ backgroundColor: '#0966FF', borderTop: '3px solid #84cf3f' }}
+            // style={{ backgroundColor: '#0966FF', borderTop: '3px solid #84cf3f' }}
+            style={{ backgroundColor: '#0966FF' }}
             className="flex justify-center items-center"
         >
             <div

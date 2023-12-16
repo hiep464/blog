@@ -552,7 +552,7 @@ function Home() {
 
                 <div className="w-full max-w-[1200px] px-[20px] md:px-[30px] mt-[20px] md:mt-[50px] mb-[10px] md:mb-[50px]">
                     <div className="text-[24px] text-[#082C70] font-[700] mb-[20px] md:mb-[6px]">
-                        PHÂN DỊCH, DỊCH THUẬT NHẬT-VIỆT
+                        PHẦN DỊCH, DỊCH THUẬT NHẬT-VIỆT
                     </div>
                     <div className="flex flex-col md:flex-row">
                         {t.map((item, idx) => {
