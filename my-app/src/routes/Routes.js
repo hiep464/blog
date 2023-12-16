@@ -10,6 +10,6 @@ export const publicRoutes = [
     { path: '/', element: Home, layout: DefaultLayout },
     { path: '/category/*', element: Category, layout: DefaultLayout },
     { path: '/search/*', element: Search, layout: DefaultLayout },
-    { path: '/detail/*', element: Detail, layout: DefaultLayout },
+    { path: '/detail/:id', element: Detail, layout: DefaultLayout },
     { path: '/contact', element: Contact, layout: DefaultLayout },
 ];

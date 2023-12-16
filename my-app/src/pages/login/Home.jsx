@@ -7,7 +7,7 @@ import item3 from '../../acess/item3.jpg';
 
 import section31 from '../../acess/section31.jpg';
 import section32 from '../../acess/section32.jpg';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../../styles/global.scss';
 
 import './styles.scss';
@@ -27,13 +27,21 @@ function Home() {
     const [e, setE] = useState([]);
     const [t, setT] = useState([]);
     const [link, setLink] = useState([]);
+    const [feature, setFeature] = useState([]);
+
+    const navigate = useNavigate()
 
     useEffect(() => {
         axios.get(`${baseApi}/home/info`).then((res) => {
             setLasttest(res.data);
         });
-        axios.get(`${baseApi}/home/EDUCATION/4`).then((res) => {
-            setLc(res.data);
+        axios.get(`${baseApi}/home/LIFE_COACH/1`).then((res) => {
+            const newState = res.data;
+            const dateObject = new Date(res.data[0].created_at);
+            const newYear = dateObject.getFullYear();
+            newState[0].created_at = newYear;
+            console.log(res.data);
+            setLc(newState);
         });
         axios.get(`${baseApi}/home/EDUCATION/6`).then((res) => {
             setHp(res.data);
@@ -47,8 +55,14 @@ function Home() {
         axios.get(`${baseApi}/link`).then((res) => {
             setLink(res.data);
         });
+        axios.get(`${baseApi}/blog/feature`).then((res) => {
+            setFeature(res.data);
+        });
     }, []);
 
+    const handleNavigate = (id) => {
+        navigate(`/detail/${id}`)
+    }
     return (
         // <main className='bg-black'>
         <main>
@@ -81,8 +95,99 @@ function Home() {
                         <div dangerouslySetInnerHTML={{ __html: lastest[0]?.content }} />
                     </div>
                 </div>
-                <div className="w-full max-w-[1200px]" style={{ borderBottom: '4px solid #F0CE88' }}></div>
+                <div
+                    style={{ backgroundColor: '#F0CE88' }}
+                    className="item1 pt-[2%] pb-[2.5%] w-full flex justify-center items-center"
+                >
+                    <div className="max-w-[1200px] px-[20px] md:px-[30px]  float-left">
+                        <div className="text-[24px] text-[#082C70] font-[700] mb-[15px]"> BÀI VIẾT NỔI BẬT</div>
+                        <div class="row align-items-start !grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
+                            {feature?.map((item, idx) => {
+                                return (
+                                    <div key={idx} class="w-full">
+                                        <div class="card border-0 !bg-[#F0CE88]">
+                                            <div className="md:h-[186px]  overflow-hidden">
+                                                <img
+                                                    onClick={() => {handleNavigate(item.id)}}
+                                                    src={`${baseImage}${item.image}`}
+                                                    className="hover:scale-110 transition-all duration-[300ms] w-full h-[186px] object-cover"
+                                                    alt="..."
+                                                />
+                                            </div>
+                                            <div class="px-[10px] py-[10px]">
+                                                <p onClick={() => {handleNavigate(item.id)}} class=" text-[16px] xl:text-[20px] font-[500] text-center leading-[100%] home-text">
+                                                    {item.title}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                );
+                            })}
 
+                            {/* <div class="w-full">
+                                <div class="card border-0 !bg-[#F0CE88]">
+                                    <div className="md:h-[186px]  overflow-hidden">
+                                        <img
+                                            src={item2}
+                                            className="hover:scale-110 transition-all duration-[300ms] w-full h-[186px] object-cover"
+                                            alt="..."
+                                        />
+                                    </div>
+                                    <div class="px-[10px] py-[10px]">
+                                        <p class="card-text text-[13px] xl:text-[15px] font-[500] text-center leading-[100%] home-text">
+                                            Biết mình là “người thứ 3”, người phụ nữ vẫn lần lữa kéo dài cuộc tình tới 5
+                                            năm, lý do khiến ai nấy thương cảm
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-full">
+                                <div class="card border-0 !bg-[#F0CE88]">
+                                    <img src={item3} class="h-[186px] object-cover" alt="..." />
+                                    <div class="px-[10px] py-[10px]">
+                                        <p class="card-text text-[13px] xl:text-[15px] font-[500] text-center leading-[100%] home-text">
+                                            Biết mình là “người thứ 3”, người phụ nữ vẫn lần lữa kéo dài cuộc tình tới 5
+                                            năm, lý do khiến ai nấy thương cảm
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-full">
+                                <div class="card border-0 !bg-[#F0CE88]">
+                                    <img src={item3} class="h-[186px] object-cover" alt="..." />
+                                    <div class="px-[10px] py-[10px]">
+                                        <p class="card-text text-[13px] xl:text-[15px] font-[500] text-center leading-[100%] home-text">
+                                            Biết mình là “người thứ 3”, người phụ nữ vẫn lần lữa kéo dài cuộc tình tới 5
+                                            năm, lý do khiến ai nấy thương cảm
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-full">
+                                <div class="card border-0 !bg-[#F0CE88]">
+                                    <img src={item3} class="h-[186px] object-cover" alt="..." />
+                                    <div class="px-[10px] py-[10px]">
+                                        <p class="card-text text-[13px] xl:text-[15px] font-[500] text-center leading-[100%] home-text">
+                                            Biết mình là “người thứ 3”, người phụ nữ vẫn lần lữa kéo dài cuộc tình tới 5
+                                            năm, lý do khiến ai nấy thương cảm
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-full">
+                                <div class="card border-0 !bg-[#F0CE88]">
+                                    <img src={item3} class="h-[186px] object-cover" alt="..." />
+                                    <div class="px-[10px] py-[10px]">
+                                        <p class="card-text text-[13px] xl:text-[15px] font-[500] text-center leading-[100%] home-text">
+                                            Biết mình là “người thứ 3”, người phụ nữ vẫn lần lữa kéo dài cuộc tình tới 5
+                                            năm, lý do khiến ai nấy thương cảm
+                                        </p>
+                                    </div>
+                                </div>
+                            </div> */}
+                        </div>
+                    </div>
+                </div>
                 <div className="flex flex-col md:flex-row justify-center items-start w-full max-w-[1200px] px-[20px] md:px-[30px] mt-[30px] md:mb-[40px]">
                     <div className="w-full md:w-[60%] md:mr-[25px] flex justify-center items-center flex-col">
                         <div className="md:pb-[40px]">
@@ -320,28 +425,30 @@ function Home() {
                 {/* <div class="w-full h-[0.5px] bg-white"></div> */}
 
                 {/* <div class="w-full h-[0.5px] bg-white"></div> */}
-                <div className="flex flex-col md:flex-row justify-center items-start w-full max-w-[1200px] px-[20px] md:px-[30px] mt-[30px] mb-[40px]">
-                    <div className="w-full md:w-[66%] md:mr-[25px]">
+                <div className="flex flex-col md:flex-row justify-start items-start w-full max-w-[1200px] px-[20px] md:px-[30px] mt-[30px] mb-[40px]">
+                    <div className="w-full md:w-[80%] md:mr-[25px]">
                         <div className="md:pb-[25px]">
                             <div className="text-[#082C70] text-[24px] font-[700] pb-[30px]">LIFE COACH</div>
-                            <div className="w-full flex-row justify-between items-start hidden md:flex">
-                                <div className="overflow-hidden w-[50%]">
+                            <div className="w-full flex-row items-start hidden md:flex">
+                                <div className="overflow-hidden w-[40%]">
                                     <img
                                         src={`${baseImage}${lc[0]?.image}`}
-                                        className="hover:scale-110 transition-all duration-[300ms] w-full object-cover"
+                                        className="hover:scale-110 transition-all duration-[300ms] w-[88%] object-cover"
                                         alt="..."
                                     />
                                 </div>
                                 <div className="w-[50%] text-black ml-[10px] mt-[10px]">
-                                    <div className="text-[14px] font-[400] italic"> 27 Tháng Tư, 2023</div>
-                                    <div className="text-[17px] font-[500] py-[10px] home-text">{lc[0]?.title}</div>
-                                    <div className="text-[14px] text-[#c6c6c6] font-[400] text-5-line ">
+                                    <div className="text-[14px] font-[400] italic">Năm {lc[0]?.created_at}</div>
+                                    <div className="text-[28px] text-[#0966FF] font-[700] py-[10px] home-text">
+                                        {lc[0]?.title}
+                                    </div>
+                                    <div className="text-[16px] font-[400] text-5-line ">
                                         {lc[0]?.short_description}
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div className="!grid grid-cols-1 md:grid-cols-3 row">
+                        {/* <div className="!grid grid-cols-1 md:grid-cols-3 row">
                             <div className="w-full h-fit md:h-auto">
                                 <div className="overflow-hidden">
                                     <img
@@ -366,101 +473,15 @@ function Home() {
                                     {lc[3]?.title}
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
-                    <div className="w-full md:w-[33%] md:px-[30px]">
+                    {/* <div className="w-full md:w-[33%] md:px-[30px]">
                         <img className="w-full" src={section32} alt=""></img>
-                    </div>
+                    </div> */}
                 </div>
+                <div className="w-full max-w-[1200px]" style={{ borderBottom: '4px solid #F0CE88' }}></div>
+
                 {/* <div class="w-full h-[0.5px] bg-white"></div> */}
-                <div
-                    style={{ backgroundColor: '#F0CE88' }}
-                    className="item1 pt-[2%] pb-[2.5%] w-full flex justify-center items-center"
-                >
-                    <div className="max-w-[1200px] px-[20px] md:px-[30px]">
-                        <div className="text-[24px] text-[#082C70] font-[700] mb-[15px]"> BÀI VIẾT NỔI BẬT</div>
-                        <div class="row align-items-start !grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
-                            <div class="w-full">
-                                <div class="card border-0 !bg-[#F0CE88]">
-                                    <div className="md:h-[186px]  overflow-hidden">
-                                        <img
-                                            src={item1}
-                                            className="hover:scale-110 transition-all duration-[300ms] w-full h-[186px] object-cover"
-                                            alt="..."
-                                        />
-                                    </div>
-                                    <div class="px-[10px] py-[10px]">
-                                        <p class="card-text text-[13px] xl:text-[15px] font-[500] text-center leading-[100%] home-text">
-                                            Biết mình là “người thứ 3”, người phụ nữ vẫn lần lữa kéo dài cuộc tình tới 5
-                                            năm, lý do khiến ai nấy thương cảm
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="w-full">
-                                <div class="card border-0 !bg-[#F0CE88]">
-                                    <div className="md:h-[186px]  overflow-hidden">
-                                        <img
-                                            src={item2}
-                                            className="hover:scale-110 transition-all duration-[300ms] w-full h-[186px] object-cover"
-                                            alt="..."
-                                        />
-                                    </div>
-                                    <div class="px-[10px] py-[10px]">
-                                        <p class="card-text text-[13px] xl:text-[15px] font-[500] text-center leading-[100%] home-text">
-                                            Biết mình là “người thứ 3”, người phụ nữ vẫn lần lữa kéo dài cuộc tình tới 5
-                                            năm, lý do khiến ai nấy thương cảm
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="w-full">
-                                <div class="card border-0 !bg-[#F0CE88]">
-                                    <img src={item3} class="h-[186px] object-cover" alt="..." />
-                                    <div class="px-[10px] py-[10px]">
-                                        <p class="card-text text-[13px] xl:text-[15px] font-[500] text-center leading-[100%] home-text">
-                                            Biết mình là “người thứ 3”, người phụ nữ vẫn lần lữa kéo dài cuộc tình tới 5
-                                            năm, lý do khiến ai nấy thương cảm
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="w-full">
-                                <div class="card border-0 !bg-[#F0CE88]">
-                                    <img src={item3} class="h-[186px] object-cover" alt="..." />
-                                    <div class="px-[10px] py-[10px]">
-                                        <p class="card-text text-[13px] xl:text-[15px] font-[500] text-center leading-[100%] home-text">
-                                            Biết mình là “người thứ 3”, người phụ nữ vẫn lần lữa kéo dài cuộc tình tới 5
-                                            năm, lý do khiến ai nấy thương cảm
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="w-full">
-                                <div class="card border-0 !bg-[#F0CE88]">
-                                    <img src={item3} class="h-[186px] object-cover" alt="..." />
-                                    <div class="px-[10px] py-[10px]">
-                                        <p class="card-text text-[13px] xl:text-[15px] font-[500] text-center leading-[100%] home-text">
-                                            Biết mình là “người thứ 3”, người phụ nữ vẫn lần lữa kéo dài cuộc tình tới 5
-                                            năm, lý do khiến ai nấy thương cảm
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="w-full">
-                                <div class="card border-0 !bg-[#F0CE88]">
-                                    <img src={item3} class="h-[186px] object-cover" alt="..." />
-                                    <div class="px-[10px] py-[10px]">
-                                        <p class="card-text text-[13px] xl:text-[15px] font-[500] text-center leading-[100%] home-text">
-                                            Biết mình là “người thứ 3”, người phụ nữ vẫn lần lữa kéo dài cuộc tình tới 5
-                                            năm, lý do khiến ai nấy thương cảm
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 {/* <div class="w-full h-[0.5px] bg-white hidden md:block"></div> */}
                 <div className="w-full max-w-[1200px] px-[20px] md:px-[30px] mt-[20px] md:mt-[50px] mb-[10px] md:mb-[50px]">
                     <div className="text-[24px] text-[#082C70] font-[700] mb-[20px] md:mb-[6px]">

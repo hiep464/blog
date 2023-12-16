@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { baseApi } from '../constant';
 
 function Detail() {
     const [content, setContent] = useState(null);
+    const [title, setTitle] = useState(null);
     let location = useLocation();
+    const { id } = useParams();
 
     useEffect(() => {
         axios
-            .get(`${baseApi}/blog/1`)
+            .get(`${baseApi}/blog/${id}`)
             .then((res) => {
                 // Tìm và thay thế mọi thuộc tính src trong các thẻ img
                 const modifiedContent = res.data.content.replace(
@@ -22,6 +24,7 @@ function Detail() {
                 );
                 console.log(modifiedContent)
                 setContent(modifiedContent);
+                setTitle(res.data.title)
             })
             .catch((err) => {
                 console.log(err);
@@ -45,8 +48,8 @@ function Detail() {
             <div className="flex flex-col justify-centera items-center">
                 <div className="max-w-[1200px] w-full px-[20px] md:px-0">
                     <div className="w-full">
-                        <div className="text-[24px] font-[700] mt-[30px]">
-                            CHỒNG ĐƯA NGƯỜI TÌNH VỀ NHÀ, VỢ BẮT ĐƯỢC TẠI TRẬN VÀ CÁI KẾT SAU 10 NĂM
+                        <div className="text-[32px] text-[#0966FF] font-[700] mt-[30px]">
+                            {title}
                         </div>
                         <i class="fa fa-gg-circle" aria-hidden="true"></i>
                         {/* <div>{content}</div> */}
