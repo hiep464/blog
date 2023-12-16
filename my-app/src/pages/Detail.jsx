@@ -8,6 +8,7 @@ function Detail() {
     const [title, setTitle] = useState(null);
     let location = useLocation();
     const { id } = useParams();
+    console.log("id", id)
 
     useEffect(() => {
         axios
@@ -22,9 +23,9 @@ function Detail() {
                         return newSrc;
                     },
                 );
-                console.log(modifiedContent)
+                console.log(modifiedContent);
                 setContent(modifiedContent);
-                setTitle(res.data.title)
+                setTitle(res.data.title);
             })
             .catch((err) => {
                 console.log(err);
@@ -48,12 +49,22 @@ function Detail() {
             <div className="flex flex-col justify-centera items-center">
                 <div className="max-w-[1200px] w-full px-[20px] md:px-0">
                     <div className="w-full">
-                        <div className="text-[32px] text-[#0966FF] font-[700] mt-[30px]">
-                            {title}
-                        </div>
+                        <div className="text-[32px] text-[#0966FF] font-[700] mt-[30px]">{title}</div>
                         <i class="fa fa-gg-circle" aria-hidden="true"></i>
                         {/* <div>{content}</div> */}
                         <div dangerouslySetInnerHTML={{ __html: content }} />
+                        { 
+                        id === "2" ? (
+                            <button
+                                class="btn"
+                                type="submit"
+                                className="text-white bg-[#BF211A] uppercase px-[10px] py-[10px] my-[10px]"
+                            >
+                                Đăng ký
+                            </button>
+                        ) : (
+                            ''
+                        )}
                     </div>
                 </div>
             </div>
