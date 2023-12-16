@@ -91,7 +91,7 @@ function Header() {
             >
                 <img style={{ height: '88px', width: '88px' }} src={logo} alt="#" />
                 <span style={{ color: '#082C70' }}>
-                    <strong>Kakojp</strong> 合同会社
+                    <strong>KAKOJP</strong> 合同会社
                 </span>
             </div>
             <div class="btn-group !absolute right-[30px] top-[30px] !flex md:!hidden">
