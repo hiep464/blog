@@ -130,7 +130,7 @@ function Header() {
                     alignItems: 'center',
                     justifyContent: 'center',
                     flexDirection: 'column',
-                    backgroundColor: '#002664',
+                    backgroundColor: '#0966FF',
                 }}
                 className={`home-header ${
                     show === 1 ? 'home-header' : show === 3 ? 'home-header--show' : 'home-header--hidden'

@@ -7,7 +7,7 @@ import youtube from '../../acess/ytb.png';
 function Footer() {
     return (
         <footer
-            style={{ backgroundColor: '#002664', borderTop: '3px solid #84cf3f' }}
+            style={{ backgroundColor: '#0966FF', borderTop: '3px solid #84cf3f' }}
             className="flex justify-center items-center"
         >
             <div
@@ -65,7 +65,7 @@ function Footer() {
                                         src={facebook}
                                         alt=""
                                     />
-                                    <a href="https://www.facebook.com/dao.vanthu.58">Facebook</a>
+                                    <a style={{textDecoration: "none", color: 'white'}} href="https://www.facebook.com/dao.vanthu.58">Facebook</a>
                                 </div>
                                 <div style={{ marginBottom: '20px', display: 'flex' }}>
                                     <img
@@ -73,7 +73,7 @@ function Footer() {
                                         src={tiktok}
                                         alt=""
                                     />
-                                    <a href="https://www.tiktok.com/@kakojp?_t=8hi8KUNcgGA&_r=1">Tik tok</a>
+                                    <a style={{textDecoration: "none", color: 'white'}} href="https://www.tiktok.com/@kakojp?_t=8hi8KUNcgGA&_r=1">Tik tok</a>
                                 </div>
                                 {/* <div style={{ marginBottom: '20px' }}>
                                     <img src={email} alt="" />
@@ -85,7 +85,7 @@ function Footer() {
                                         src={youtube}
                                         alt=""
                                     />
-                                    <a href="https://www.tiktok.com/@kakojp?_t=8hi8KUNcgGA&_r=1">Youtube</a>
+                                    <a style={{textDecoration: "none", color: 'white'}} href="https://www.tiktok.com/@kakojp?_t=8hi8KUNcgGA&_r=1">Youtube</a>
                                 </div>
                             </p>
                         </div>
