@@ -5,6 +5,8 @@ import logo from '../../acess/avartar.png';
 import threebar from '../../acess/svg/threebars.svg';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.scss';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+
 function Header() {
     const HomeRoutesConfig = [
         {
@@ -45,6 +47,7 @@ function Header() {
     const [search, setSearch] = useState('');
     const [showMenu, setShowMenu] = useState(false); //show menu mobile
     const [show, setShow] = useState(1); //show header when scroll
+    const [fix, setFix] = useState(false); //show header when scroll
 
     let data = useLocation();
     const navigate = useNavigate();
@@ -77,6 +80,21 @@ function Header() {
     //         window.removeEventListener('scroll', handleScroll);
     //     };
     // }, []);
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 104) {
+                setFix(true);
+            } else {
+                setFix(false);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
 
     return (
         <>
@@ -109,22 +127,44 @@ function Header() {
                     role="menu"
                     className={`w-full flex flex-col bg-white text-black ${showMenu ? 'flex' : 'hidden'}`}
                 >
-                    {HomeRoutesConfig.map((item) => (
-                        <Link
-                            scroll={true}
-                            key={item.route}
-                            onClick={() => setShowMenu(!showMenu)}
-                            className="text-black no-underline  w-full px-[15px] py-[8px] border-b-[1px] border-solid border-[#e5e5e5] uppercase text-[14px]"
-                            to={`${item.route}`}
-                        >
-                            {item.label}
-                        </Link>
-                    ))}
+                    {HomeRoutesConfig.map((item, idx) =>
+                        item?.label === 'khoá học' ? (
+                            <>
+                                <Link
+                                    scroll={true}
+                                    key={item.route + idx}
+                                    onClick={() => setShowMenu(!showMenu)}
+                                    className="text-black no-underline  w-full px-[15px] py-[8px] border-b-[1px] border-solid border-[#e5e5e5] uppercase text-[14px]"
+                                    to={'/category/course_lc'}
+                                >
+                                    KHÓA HỌC LIFE COACH
+                                </Link>
+                                <Link
+                                    scroll={true}
+                                    key={item.route + idx}
+                                    onClick={() => setShowMenu(!showMenu)}
+                                    className="text-black no-underline  w-full px-[15px] py-[8px] border-b-[1px] border-solid border-[#e5e5e5] uppercase text-[14px]"
+                                    to={'/category/course_hp'}
+                                >
+                                    KHÓA HỌC XEM CHỈ TAY
+                                </Link>
+                            </>
+                        ) : (
+                            <Link
+                                scroll={true}
+                                key={item.route}
+                                onClick={() => setShowMenu(!showMenu)}
+                                className="text-black no-underline  w-full px-[15px] py-[8px] border-b-[1px] border-solid border-[#e5e5e5] uppercase text-[14px]"
+                                to={`${item.route}`}
+                            >
+                                {item.label}
+                            </Link>
+                        ),
+                    )}
                 </div>
             </div>
             <header
                 style={{
-                    backgroundColor: '#001219',
                     width: '100%',
                     display: 'flex',
                     alignItems: 'center',
@@ -134,84 +174,113 @@ function Header() {
                 }}
                 className={`home-header ${
                     show === 1 ? 'home-header' : show === 3 ? 'home-header--show' : 'home-header--hidden'
-                } z-50`}
+                } z-50 `}
             >
                 <div
-                    style={{ display: 'flex', alignItems: 'center' }}
-                    className="xl:w-[1200px] relative w-full md:h-[100px] justify-center"
+                    className={`w-full ${fix ? 'header-fixed' : ''}`}
+                    style={{
+                        width: '100%',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        flexDirection: 'column',
+                        backgroundColor: '#0966FF',
+                    }}
                 >
-                    <div className="flex flex-col justify-center items-center !w-full md:!w-auto px-[20px]  md:pr-0">
-                        <div class="input-group" className="flex md:hidden w-full mb-[30px] home-search">
-                            <input
-                                type="text"
-                                class="form-control"
-                                placeholder="search here"
-                                aria-label="search here"
-                                aria-describedby="button-addon2"
-                                onChange={(e) => setSearch(e.target.value)}
-                                className="h-[34px] p-[12px] w-full"
-                            />
+                    <div
+                        style={{ display: 'flex', alignItems: 'center', backgroundColor: '#0966FF' }}
+                        className={`xl:w-[1200px] relative w-full md:h-[100px] justify-center`}
+                    >
+                        <div className="flex flex-col justify-center items-center !w-full md:!w-auto px-[20px]  md:pr-0">
+                            <div class="input-group" className="flex md:hidden w-full mb-[30px] home-search">
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    placeholder="search here"
+                                    aria-label="search here"
+                                    aria-describedby="button-addon2"
+                                    onChange={(e) => setSearch(e.target.value)}
+                                    className="h-[34px] p-[12px] w-full"
+                                />
+                                <button
+                                    class="btn btn-outline-secondary text-white"
+                                    type="button"
+                                    id="button-addon2"
+                                    style={{ backgroundColor: 'rgb(90, 136, 202)' }}
+                                    onClick={handleChangeSearch}
+                                    className="h-[34px] px-[12px]"
+                                >
+                                    <span>search</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <nav
+                            style={{ padding: '0 15px' }}
+                            className={`flex-row justify-between items-center w-full hidden md:flex `}
+                        >
+                            {HomeRoutesConfig.map((item, idx) =>
+                                item?.label === 'khoá học' ? (
+                                    <NavDropdown
+                                        key={idx}
+                                        title="KHÓA HỌC"
+                                        id="nav-dropdown"
+                                        active={data.pathname.includes(item.route)}
+                                    >
+                                        {console.log('check: ', data.pathname.includes('course_lc'))}
+                                        <NavDropdown.Item href="/category/course_lc" eventKey="4.1">
+                                            LIFE COACH
+                                        </NavDropdown.Item>
+                                        <NavDropdown.Item href="/category/course_hp" eventKey="4.2">
+                                            XEM CHỈ TAY
+                                        </NavDropdown.Item>
+                                    </NavDropdown>
+                                ) : (
+                                    <Link
+                                        scroll={true}
+                                        key={item.route}
+                                        className={`uppercase header-btn no-underline text-xl md:!text-[8px] lg:!text-[12px]  xl:!text-[14px] font-[700] !px-[15px] lg:!px-[18px] ${
+                                            data.pathname.includes(item.route) ||
+                                            (data.pathname.includes('/home') && item.default)
+                                                ? 'header-btn-active'
+                                                : ''
+                                        } ${item.route === '/contact' ? 'btn-contact' : ''}`}
+                                        to={`${item.route}`}
+                                    >
+                                        {item.label}
+                                    </Link>
+                                ),
+                            )}
+                        </nav>
+                        {/* <div class="btn-group !absolute right-[30px] top-[30px] !flex md:!hidden">
                             <button
-                                class="btn btn-outline-secondary text-white"
                                 type="button"
-                                id="button-addon2"
-                                style={{ backgroundColor: 'rgb(90, 136, 202)' }}
-                                onClick={handleChangeSearch}
-                                className="h-[34px] px-[12px]"
+                                className="border-[1px] border-solid border-white p-[12px]"
+                                onClick={() => setShowMenu(!showMenu)}
                             >
-                                <span>search</span>
+                                <img src={threebar} className="!w-[14px] !h-[14px] bg-[red]" alt=""></img>
                             </button>
                         </div>
-                    </div>
-
-                    <nav
-                        style={{ padding: '0 15px' }}
-                        className="flex-row justify-between items-center w-full hidden md:flex"
-                    >
-                        {HomeRoutesConfig.map((item) => (
-                            <Link
-                                scroll={true}
-                                key={item.route}
-                                className={`uppercase header-btn no-underline text-xl md:!text-[8px] lg:!text-[12px]  xl:!text-[14px] font-[700] !px-[15px] lg:!px-[18px] ${
-                                    data.pathname.includes(item.route) ||
-                                    (data.pathname.includes('/home') && item.default)
-                                        ? 'header-btn-active'
-                                        : ''
-                                } ${item.route === '/contact' ? 'btn-contact' : ''}`}
-                                to={`${item.route}`}
+                        <div className="absolute top-[90px] w-full px-[20px] right-0 z-10 !flex md:!hidden">
+                            <div
+                                class="dropdown-menu pull-right"
+                                role="menu"
+                                className={`w-full flex flex-col bg-white text-black ${showMenu ? 'flex' : 'hidden'}`}
                             >
-                                {item.label}
-                            </Link>
-                        ))}
-                    </nav>
-                    {/* <div class="btn-group !absolute right-[30px] top-[30px] !flex md:!hidden">
-                        <button
-                            type="button"
-                            className="border-[1px] border-solid border-white p-[12px]"
-                            onClick={() => setShowMenu(!showMenu)}
-                        >
-                            <img src={threebar} className="!w-[14px] !h-[14px] bg-[red]" alt=""></img>
-                        </button>
+                                {HomeRoutesConfig.map((item) => (
+                                    <Link
+                                        scroll={true}
+                                        key={item.route}
+                                        onClick={() => setShowMenu(!showMenu)}
+                                        className="text-black no-underline  w-full px-[15px] py-[8px] border-b-[1px] border-solid border-[#e5e5e5] uppercase text-[14px]"
+                                        to={`${item.route}`}
+                                    >
+                                        {item.label}
+                                    </Link>
+                                ))}
+                            </div>
+                        </div> */}
                     </div>
-                    <div className="absolute top-[90px] w-full px-[20px] right-0 z-10 !flex md:!hidden">
-                        <div
-                            class="dropdown-menu pull-right"
-                            role="menu"
-                            className={`w-full flex flex-col bg-white text-black ${showMenu ? 'flex' : 'hidden'}`}
-                        >
-                            {HomeRoutesConfig.map((item) => (
-                                <Link
-                                    scroll={true}
-                                    key={item.route}
-                                    onClick={() => setShowMenu(!showMenu)}
-                                    className="text-black no-underline  w-full px-[15px] py-[8px] border-b-[1px] border-solid border-[#e5e5e5] uppercase text-[14px]"
-                                    to={`${item.route}`}
-                                >
-                                    {item.label}
-                                </Link>
-                            ))}
-                        </div>
-                    </div> */}
                 </div>
                 <div
                     style={{

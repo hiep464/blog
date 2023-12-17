@@ -37,7 +37,7 @@ function Category() {
             setTitle('LIFE COACH');
             category = 'LIFE_COACH';
         } else if (location.pathname.includes('pointing_hand')) {
-            setTitle('cÁCH XEM CHỈ TAY');
+            setTitle('CÁCH XEM CHỈ TAY');
             category = 'HAND_POINTING';
         } else if (location.pathname.includes('education')) {
             setTitle('GIÁO DỤC TIẾNG NHẬT');
@@ -45,9 +45,12 @@ function Category() {
         } else if (location.pathname.includes('translate')) {
             setTitle('PHIÊN DỊCH, DỊCH THUẬT NHẬT-VIỆT');
             category = 'TRANSLATE';
-        } else if (location.pathname.includes('course')) {
-            setTitle('KHÓA HỌC');
-            category = 'COURSE';
+        } else if (location.pathname.includes('course_lc')) {
+            setTitle('KHÓA HỌC LIFE COACH');
+            category = 'COURSE_LC';
+        } else if (location.pathname.includes('course_hp')) {
+            setTitle('KHÓA HỌC CÁCH XEM CHỈ TAY');
+            category = 'COURSE_HP';
         }
         axios.get(`${baseApi}/blog/${category}/page`).then((res) => {
             setMaxLenth(res.data.num_pages);

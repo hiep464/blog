@@ -20,6 +20,7 @@ function Search() {
     const [maxLenth, setMaxLenth] = useState(1);
     const [pages, setPages] = useState([]);
     const [data, setData] = useState([]);
+    const [latest, setLatest] = useState([]);
 
     const handleChangePage = (num) => {
         if (num && num !== '-' && num !== '+') {
@@ -43,6 +44,9 @@ function Search() {
             setMaxLenth(pages_rs)
             setPages(numberArray)
         });
+        axios.get(`https://kakojp.jp/api/blog/lastest`).then((res) => {
+            setLatest(res.data)
+        })
     }, [location]);
 
     return (
@@ -66,60 +70,55 @@ function Search() {
                                         Bài viết mới
                                     </div>
                                     <div className="p-[20px]">
-                                        <div className="py-[5px]">6 điều em phải nhớ sau khi chia tay anh</div>
-                                        <div className="py-[5px]">Hôn nhân không như lúc yêu được đâu em à!</div>
-                                        <div className="py-[5px]">Đừng vì cô đơn rồi nắm tay một người!!</div>
-                                        <div className="py-[5px]">
-                                            Biết mình là “người thứ 3”, người phụ nữ vẫn lần lữa kéo dài cuộc tình tới 5
-                                            năm, lý do khiến ai nấy thương cảm
-                                        </div>
-                                        <div className="py-[5px]">
-                                            Nghẹn đắng tờ kết quả ADN, cái thai là con tôi nhưng tôi vẫn muốn ly hôn
-                                        </div>
+                                        {
+                                            latest.map((item, idx) => {
+                                                return (
+                                                    <div key={idx} className="py-[5px]">{item.title}</div>
+                                                )
+                                            })
+                                        }
                                     </div>
                                 </div>
-                                <div className=" border-[1px] border-solid border-[#eaeaea] mt-[20px]">
-                                    <div className="bg-[#fbfbfb] px-[20px] py-[15px] text-[14px] font-[600] uppercase border-b-[1px] border-solid border-[#eaeaea]">
-                                        Phản hồi gần đây
-                                    </div>
-                                    <div className="p-[20px]">
-                                        <div className="py-[5px]">6 điều em phải nhớ sau khi chia tay anh</div>
-                                    </div>
-                                </div>
-                                <div className=" border-[1px] border-solid border-[#eaeaea] mt-[20px]">
+                                <div className=" border-[1px] border-solid border-[#eaeaea] mt-[20px] mb-[20px]">
                                     <div className="bg-[#fbfbfb] px-[20px] py-[15px] text-[14px] font-[600] uppercase border-b-[1px] border-solid border-[#eaeaea]">
                                         Chuyên mục
                                     </div>
                                     <div className="p-[20px] flex flex-col">
                                         <Link
                                             className="py-[5px] text-[14px] font-[400] text-black no-underline"
-                                            to="/category/husband"
+                                            to="/category/life_coach"
                                         >
-                                            CHUYỆN CHỒNG NGOẠI TÌNH
+                                            LIFE COACH
                                         </Link>
                                         <Link
                                             className="py-[5px] text-[14px] font-[400] text-black no-underline"
-                                            to="/category/new"
+                                            to="/category/pointing_hand"
                                         >
-                                            CHUYỆN NGOẠI TÌNH MỚI
+                                            CÁCH XEM CHỈ TAY
                                         </Link>
                                         <Link
                                             className="py-[5px] text-[14px] font-[400] text-black no-underline"
-                                            to="/category/outstanding"
+                                            to="/category/education"
                                         >
-                                            CHUYỆN NGOẠI TÌNH NỔI BẬT
+                                            GIÁO DỤC TIẾNG NHẬT
                                         </Link>
                                         <Link
                                             className="py-[5px] text-[14px] font-[400] text-black no-underline"
-                                            to="/category/wife"
+                                            to="/category/translate"
                                         >
-                                            CHUYỆN VỢ NGOẠI TÌNH
+                                            PHIÊN DỊCH, DỊCH THUẬT NHẬT VIỆT
                                         </Link>
                                         <Link
                                             className="py-[5px] text-[14px] font-[400] text-black no-underline"
-                                            to="/category/love"
+                                            to="/category/course_lc"
                                         >
-                                            TẢN MẠN TÌNH YÊU
+                                            KHÓA HỌC LIFE COACH
+                                        </Link>
+                                        <Link
+                                            className="py-[5px] text-[14px] font-[400] text-black no-underline"
+                                            to="/category/course_hp"
+                                        >
+                                            KHÓA HỌC CÁCH XEM CHỈ TAY
                                         </Link>
                                     </div>
                                 </div>
@@ -140,7 +139,7 @@ function Search() {
                                                     ></img>
                                                 </div>
                                                 <div className="w-[70%] md:w-[80%] flex flex-col justify-start items-start ml-[20px]">
-                                                    <div className="mb-[3px] text-[14px] md:text-[18px] font-[600] text-2-line">
+                                                    <div className="mb-[3px] text-[14px] md:text-[18px] font-[600] text-2-line text-[#0966FF]">
                                                         {item.title}
                                                     </div>
                                                     <div className="text-[12px] md:text-[14px] font-[400] text-2-line">

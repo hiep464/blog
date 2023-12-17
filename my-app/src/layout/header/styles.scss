@@ -23,12 +23,12 @@
 }
 
 .header-btn:hover {
-    color: #F0CE88 !important;
+    color: #FFBD59 !important;
 }
 
 .header-btn-active {
     // background-color: white !important;
-    color           : #F0CE88 !important;
+    color           : #FFBD59 !important;
     font-weight     : 700;
 }
 
@@ -60,4 +60,37 @@
         transition: transform 0.8s ease-out;
         transform : translateY(-100%);
     }
+}
+
+.dropdown-menu{
+    margin-top: 18px;
+}
+
+.dropdown-toggle{
+    color  : white !important;
+    cursor : pointer;
+    padding: 3px 15px !important;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.dropdown-toggle:hover, .dropdown-item:hover {
+    color: #FFBD59 !important;
+}
+
+.dropdown-item{
+    color: #0966FF;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.active{
+    color: #FFBD59 !important;
+}
+
+.header-fixed {
+    position: fixed;
+    top: 0;
+    // width: 100%;
+    z-index: 1000; /* Đặt z-index để phần tử cố định nằm trên cùng */
 }

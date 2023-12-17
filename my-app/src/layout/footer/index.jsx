@@ -3,8 +3,16 @@ import '../../styles/global.scss';
 import tiktok from '../../acess/tiktok.webp';
 import facebook from '../../acess/fb.png';
 import youtube from '../../acess/ytb.png';
+import zalo from '../../acess/zalo.jpg';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import { useState } from 'react';
 
 function Footer() {
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
     return (
         <footer
             // style={{ backgroundColor: '#0966FF', borderTop: '3px solid #84cf3f' }}
@@ -36,7 +44,7 @@ function Footer() {
                                         fontWeight: '700',
                                     }}
                                 >
-                                    <strong>Tư vấn tâm lý</strong>
+                                    <strong>Tư vấn</strong>
                                 </div>
                                 <div style={{ marginBottom: '20px' }}>Email: srsgogakukyositsu@gmail.com</div>
                                 <div style={{ lineHeight: '150%' }}>
@@ -52,43 +60,59 @@ function Footer() {
                                 KẾT NỐI VỚI CHÚNG TÔI
                             </div>
                             <hr />
-                            <p class="card-text">
-                                <div
-                                    style={{
-                                        marginBottom: '20px',
-                                        marginTop: '20px',
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                    }}
-                                >
-                                    <img
-                                        style={{ width: '24px', height: '24px', marginRight: '4px' }}
-                                        src={facebook}
-                                        alt=""
-                                    />
-                                    <a style={{textDecoration: "none", color: 'white'}} href="https://www.facebook.com/dao.vanthu.58">Facebook</a>
+                            <div class="card-text flex w-full">
+                                <div class="w-[36%]">
+                                    <div
+                                        style={{
+                                            marginBottom: '20px',
+                                            marginTop: '20px',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                        }}
+                                    >
+                                        <img
+                                            style={{ width: '24px', height: '24px', marginRight: '4px' }}
+                                            src={facebook}
+                                            alt=""
+                                        />
+                                        <a
+                                            style={{ textDecoration: 'none', color: 'white' }}
+                                            href="https://www.facebook.com/dao.vanthu.58"
+                                        >
+                                            Facebook
+                                        </a>
+                                    </div>
+                                    <div style={{ marginBottom: '20px', display: 'flex' }}>
+                                        <img
+                                            style={{ width: '24px', height: '24px', marginRight: '4px' }}
+                                            src={tiktok}
+                                            alt=""
+                                        />
+                                        <a
+                                            style={{ textDecoration: 'none', color: 'white' }}
+                                            href="https://www.tiktok.com/@kakojp?_t=8hi8KUNcgGA&_r=1"
+                                        >
+                                            Tik tok
+                                        </a>
+                                    </div>
+                                    <div style={{ marginBottom: '20px', display: 'flex' }}>
+                                        <img
+                                            style={{ width: '24px', height: '24px', marginRight: '4px' }}
+                                            src={youtube}
+                                            alt=""
+                                        />
+                                        <a
+                                            style={{ textDecoration: 'none', color: 'white' }}
+                                            href="https://www.tiktok.com/@kakojp?_t=8hi8KUNcgGA&_r=1"
+                                        >
+                                            Youtube
+                                        </a>
+                                    </div>
                                 </div>
-                                <div style={{ marginBottom: '20px', display: 'flex' }}>
-                                    <img
-                                        style={{ width: '24px', height: '24px', marginRight: '4px' }}
-                                        src={tiktok}
-                                        alt=""
-                                    />
-                                    <a style={{textDecoration: "none", color: 'white'}} href="https://www.tiktok.com/@kakojp?_t=8hi8KUNcgGA&_r=1">Tik tok</a>
+                                <div class="w-[64%] flex items-center justify-center">
+                                    <img src={zalo} alt="" style={{ width: '120px', height: '120px' }} />
                                 </div>
-                                {/* <div style={{ marginBottom: '20px' }}>
-                                    <img src={email} alt="" />
-                                    <a href={`mailto:srsgogakukyositsu@gmail.com`}>Email</a>
-                                </div> */}
-                                <div style={{ marginBottom: '20px', display: 'flex' }}>
-                                    <img
-                                        style={{ width: '24px', height: '24px', marginRight: '4px' }}
-                                        src={youtube}
-                                        alt=""
-                                    />
-                                    <a style={{textDecoration: "none", color: 'white'}} href="https://www.tiktok.com/@kakojp?_t=8hi8KUNcgGA&_r=1">Youtube</a>
-                                </div>
-                            </p>
+                            </div>
                         </div>
                     </div>
                     <div className="px-[15px]">
@@ -123,6 +147,7 @@ function Footer() {
                                     style={{ marginBottom: '10px' }}
                                 /> */}
                                 <button
+                                    onClick={handleShow}
                                     class="btn"
                                     type="submit"
                                     className="text-white bg-[#BF211A] uppercase px-[10px] py-[10px] my-[10px]"
@@ -134,6 +159,20 @@ function Footer() {
                     </div>
                 </div>
             </div>
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title id="contained-modal-title-vcenter">Đăng ký thành công</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    {/* <h4></h4> */}
+                    <h4>
+                        Cảm ơn bạn đã đăng ký, KAKOJP sẽ sớm phản hồi
+                    </h4>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button onClick={handleClose}>Đóng</Button>
+                </Modal.Footer>
+            </Modal>
         </footer>
     );
 }
