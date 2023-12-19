@@ -334,16 +334,16 @@ function Home() {
                                                     alt="..."
                                                 />
                                             </div>
-                                            <div
-                                                className="w-full text-black ml-[6px] mt-[10px]"
-                                                onClick={() => {
-                                                    handleNavigate(item?.id);
-                                                }}
-                                            >
+                                            <div className="w-full text-black ml-[6px] mt-[10px]">
                                                 <div className="text-[14px] font-[400] italic">
                                                     Năm {item?.created_at}
                                                 </div>
-                                                <div className="text-[22px] text-[#0966FF] font-[700] py-[10px] home-text">
+                                                <div
+                                                    onClick={() => {
+                                                        handleNavigate(item?.id);
+                                                    }}
+                                                    className="text-[22px] text-[#0966FF] font-[700] py-[10px] home-text"
+                                                >
                                                     {item?.title}
                                                 </div>
                                                 <div className="text-[14px] font-[400] text-5-line ">
