@@ -69,14 +69,14 @@ function Category() {
                     <div className="w-full">
                         <div className="w-full mt-[10px] border-[1px] border-solid border-[#eaeaea] flex flex-row justify-start items-center">
                             <Link className="p-[10px]" to="/">
-                                <img src={Home} alt="" className="w-[15px] h-[15px]"></img>
+                                <img src={Home} alt="" className="w-[16px] h-[16px]"></img>
                             </Link>
                             <div></div>
                             <Link to={location.pathname} className="text-black no-underline">
-                                <div className="text-[12px] font-[400] cursor-pointer uppercase">{title}</div>
+                                <div className="text-[14px] font-[500] cursor-pointer uppercase">{title}</div>
                             </Link>
                         </div>
-                        <div className="flex flex-col md:flex-row w-full">
+                        <div className="flex flex-col md:flex-row w-full mt-[30px]">
                             <div className={'w-full'}>
                                 <div className="w-full">
                                     {data.map((item, idx) => {

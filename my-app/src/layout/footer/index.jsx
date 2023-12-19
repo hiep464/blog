@@ -7,12 +7,26 @@ import zalo from '../../acess/zalo.jpg';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { useState } from 'react';
+import { baseApi } from '../../constant';
+import axios from 'axios';
 
 function Footer() {
     const [show, setShow] = useState(false);
+    const [name, setName] = useState('');
+    const [phone, setPhone] = useState('');
+    const [email, setEmail] = useState('');
 
     const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const handleShow = (e) => {
+        e.preventDefault();
+        const formDataToSend = new FormData();
+        formDataToSend.append('name', name);
+        formDataToSend.append('phone', phone);
+        formDataToSend.append('email', email);
+        axios.post(`${baseApi}/register`, formDataToSend).then(() => {
+            setShow(true);
+        });
+    };
     return (
         <footer
             // style={{ backgroundColor: '#0966FF', borderTop: '3px solid #84cf3f' }}
@@ -122,38 +136,50 @@ function Footer() {
                             </div>
                             <hr />
                             <p class="card-text">
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    placeholder="Họ và tên"
-                                    style={{ marginBottom: '10px' }}
-                                />
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    placeholder="Số điện thoại"
-                                    style={{ marginBottom: '10px' }}
-                                />
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    placeholder="Email"
-                                    style={{ marginBottom: '10px' }}
-                                />
-                                {/* <input
-                                    type="text"
-                                    class="form-control"
-                                    placeholder="Câu chuyện của bạn"
-                                    style={{ marginBottom: '10px' }}
-                                /> */}
-                                <button
-                                    onClick={handleShow}
-                                    class="btn"
-                                    type="submit"
-                                    className="text-white bg-[#BF211A] uppercase px-[10px] py-[10px] my-[10px]"
-                                >
-                                    Đăng ký
-                                </button>
+                                <form onSubmit={handleShow}>
+                                {/* <form> */}
+                                    <input
+                                        required
+                                        value={name}
+                                        onChange={(e) => {
+                                            setName(e.target.value);
+                                        }}
+                                        type="text"
+                                        class="form-control"
+                                        placeholder="Họ và tên"
+                                        style={{ marginBottom: '10px' }}
+                                    />
+                                    <input
+                                        required
+                                        value={phone}
+                                        onChange={(e) => {
+                                            setPhone(e.target.value);
+                                        }}
+                                        type="text"
+                                        class="form-control"
+                                        placeholder="Số điện thoại"
+                                        style={{ marginBottom: '10px' }}
+                                    />
+                                    <input
+                                        required
+                                        value={email}
+                                        onChange={(e) => {
+                                            setEmail(e.target.value);
+                                        }}
+                                        type="text"
+                                        class="form-control"
+                                        placeholder="Email"
+                                        style={{ marginBottom: '10px' }}
+                                    />
+                                    <button
+                                        // onClick={handleShow}
+                                        class="btn"
+                                        type="submit"
+                                        className="text-white bg-[#BF211A] uppercase px-[10px] py-[10px] my-[10px]"
+                                    >
+                                        Đăng ký
+                                    </button>
+                                </form>
                             </p>
                         </div>
                     </div>
@@ -161,13 +187,15 @@ function Footer() {
             </div>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title id="contained-modal-title-vcenter">Đăng ký thành công</Modal.Title>
+                    <Modal.Title id="contained-modal-title-vcenter">送信完了</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    {/* <h4></h4> */}
-                    <h4>
-                        Cảm ơn bạn đã đăng ký, KAKOJP sẽ sớm phản hồi
-                    </h4>
+                    <h4 style={{ textAlign: 'center' }}>Đăng ký thành công</h4>
+                    <p style={{ textAlign: 'center' }}>Cảm ơn bạn đã đăng ký, KAKOJP sẽ sớm phản hồi!</p>
+                    <p style={{ textAlign: 'center' }}>
+                        この度はお問い合わせいただきまして誠にありがとうございます。
+                        内容を確認次第、担当者より折返しご連絡させていただきます。今しばらくお待ちくださいませ。
+                    </p>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button onClick={handleClose}>Đóng</Button>
