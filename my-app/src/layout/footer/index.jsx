@@ -25,6 +25,9 @@ function Footer() {
         formDataToSend.append('email', email);
         axios.post(`${baseApi}/register`, formDataToSend).then(() => {
             setShow(true);
+            setName('');
+            setPhone('');
+            setEmail('');
         });
     };
     return (

@@ -23,6 +23,9 @@ function Contact() {
         formDataToSend.append('email', email);
         axios.post(`${baseApi}/register`, formDataToSend).then(() => {
             setShow(true);
+            setName('');
+            setPhone('');
+            setEmail('');
         });
     };
 
@@ -109,11 +112,15 @@ function Contact() {
             </div>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title id="contained-modal-title-vcenter">Đăng ký thành công</Modal.Title>
+                    <Modal.Title id="contained-modal-title-vcenter">送信完了</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    {/* <h4>Centered Modal</h4> */}
-                    <h4>Cảm ơn bạn đã đăng ký, KAKOJP sẽ sớm phản hồi</h4>
+                    <h4 style={{ textAlign: 'center' }}>Đăng ký thành công</h4>
+                    <p style={{ textAlign: 'center' }}>Cảm ơn bạn đã đăng ký, KAKOJP sẽ sớm phản hồi!</p>
+                    <p style={{ textAlign: 'center' }}>
+                        この度はお問い合わせいただきまして誠にありがとうございます。
+                        内容を確認次第、担当者より折返しご連絡させていただきます。今しばらくお待ちくださいませ。
+                    </p>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button onClick={handleClose}>Đóng</Button>
