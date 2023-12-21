@@ -30,10 +30,12 @@ function Home() {
         });
         axios.get(`${baseApi}/home/LIFE_COACH/6`).then((res) => {
             const newState = res.data;
-            const dateObject = new Date(res.data[0].created_at);
-            const newYear = dateObject.getFullYear();
-            newState[0].created_at = newYear;
-            console.log(res.data);
+            res.data.map((item, idx) => {
+                const dateObject = new Date(item.created_at);
+                const newYear = dateObject.getFullYear();
+                newState[idx].created_at = newYear;
+            })
+            // console.log(res.data);
             setLc(newState);
         });
         axios.get(`${baseApi}/home/FUNCTIONAL_FOODS/6`).then((res) => {
