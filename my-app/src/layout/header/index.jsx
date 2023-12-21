@@ -23,7 +23,7 @@ function Header() {
             route: '/category/life_coach',
         },
         {
-            label: 'cách xem chỉ tay',
+            label: 'chỉ tay',
             route: '/category/pointing_hand',
         },
         {
@@ -108,7 +108,7 @@ function Header() {
                 // className="w-[100px] xl:w-[170px]"
             >
                 <img style={{ height: '88px', width: '88px' }} src={logo} alt="#" />
-                <span style={{ color: '#082C70' }}>
+                <span style={{ color: '#0077B6' }}>
                     <strong>KAKOJP</strong> 合同会社
                 </span>
             </div>
@@ -148,6 +148,15 @@ function Header() {
                                 >
                                     KHÓA HỌC XEM CHỈ TAY
                                 </Link>
+                                <Link
+                                    scroll={true}
+                                    key={item.route + idx}
+                                    onClick={() => setShowMenu(!showMenu)}
+                                    className="text-black no-underline  w-full px-[15px] py-[8px] border-b-[1px] border-solid border-[#e5e5e5] uppercase text-[14px]"
+                                    to={'/category/course_jp'}
+                                >
+                                    KHÓA HỌC TIẾNG NHẬT
+                                </Link>
                             </>
                         ) : (
                             <Link
@@ -170,7 +179,7 @@ function Header() {
                     alignItems: 'center',
                     justifyContent: 'center',
                     flexDirection: 'column',
-                    backgroundColor: '#0966FF',
+                    backgroundColor: '#1877F2',
                 }}
                 className={`home-header ${
                     show === 1 ? 'home-header' : show === 3 ? 'home-header--show' : 'home-header--hidden'
@@ -184,11 +193,11 @@ function Header() {
                         alignItems: 'center',
                         justifyContent: 'center',
                         flexDirection: 'column',
-                        backgroundColor: '#0966FF',
+                        backgroundColor: '#1877F2',
                     }}
                 >
                     <div
-                        style={{ display: 'flex', alignItems: 'center', backgroundColor: '#0966FF' }}
+                        style={{ display: 'flex', alignItems: 'center', backgroundColor: '#1877F2' }}
                         className={`xl:w-[1200px] relative w-full md:h-[100px] justify-center`}
                     >
                         <div className="flex flex-col justify-center items-center !w-full md:!w-auto px-[20px]  md:pr-0">
@@ -233,6 +242,9 @@ function Header() {
                                         </NavDropdown.Item>
                                         <NavDropdown.Item href="/category/course_hp" eventKey="4.2">
                                             XEM CHỈ TAY
+                                        </NavDropdown.Item>
+                                        <NavDropdown.Item href="/category/course_jp" eventKey="4.2">
+                                            TIẾNG NHẬT
                                         </NavDropdown.Item>
                                     </NavDropdown>
                                 ) : (

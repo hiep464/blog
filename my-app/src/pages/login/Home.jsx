@@ -15,7 +15,7 @@ import { baseApi, baseImage } from '../../constant';
 function Home() {
     const [lastest, setLasttest] = useState([]);
     const [lc, setLc] = useState([]);
-    const [hp, setHp] = useState([]);
+    const [ff, setFf] = useState([]);
     const [e, setE] = useState([]);
     const [t, setT] = useState([]);
     const [linkViews, setLinkViews] = useState([]);
@@ -36,8 +36,8 @@ function Home() {
             console.log(res.data);
             setLc(newState);
         });
-        axios.get(`${baseApi}/home/HAND_POINTING/6`).then((res) => {
-            setHp(res.data);
+        axios.get(`${baseApi}/home/FUNCTIONAL_FOODS/6`).then((res) => {
+            setFf(res.data);
         });
         axios.get(`${baseApi}/home/EDUCATION/6`).then((res) => {
             setE(res.data);
@@ -64,31 +64,14 @@ function Home() {
         window.open(url, '_blank');
     };
     return (
-        // <main className='bg-black'>
         <main>
             <div className="flex flex-col justify-center items-center">
                 <div className="item1 pt-[2%] pb-[2.5%] bg-[white] w-full flex justify-center items-center">
-                    {/* <div className="flex flex-col md:flex-row justify-start items-start w-full max-w-[1200px] px-[20px] md:px-[30px] mt-[30px] mb-[40px]"> */}
-                    {/* <div className="max-w-[1200px] px-[20px] md:px-[30px]"> */}
                     <div className="w-[1200px] px-[20px] md:px-[30px]">
-                        <div className="text-[24px] text-[#0966FF] font-[700] mb-[15px]">GIỚI THIỆU</div>
+                        <div className="text-[24px] text-[#0077B6] font-[700] mb-[15px]">GIỚI THIỆU</div>
                         <div class="row !grid sm:grid-cols-1 md:grid-cols-4  mb-[15px]">
                             {lastest.map((item, idx) => {
                                 return (
-                                    // <div key={idx} class="w-full">
-                                    //     <Link to="/detail/1" class="card border-0 border-none bg-white no-underline ">
-                                    //         <div className="md:h-[215px] overflow-hidden">
-                                    //             <img
-                                    //                 className="hover:scale-110 transition-all duration-[300ms] w-full h-full object-cover"
-                                    //                 src={`${baseImage}${item.image}`}
-                                    //                 alt="..."
-                                    //             />
-                                    //         </div>
-                                    //         <div class="card-body py-[10px] px-[10px] home-text">
-                                    //             <p class="card-text text-[17px] font-[500]">{item?.title}</p>
-                                    //         </div>
-                                    //     </Link>
-                                    // </div>
                                     <div key={idx} class="w-full">
                                         <div class="card border-0 !bg-[white]">
                                             <div className="md:h-[200px]  overflow-hidden flex flex justify-center items-center">
@@ -122,16 +105,16 @@ function Home() {
                     </div>
                 </div>
                 <div
-                    style={{ backgroundColor: '#FFBD59' }}
+                    style={{ backgroundColor: '#EBF1FF' }}
                     className="item1 pt-[2%] pb-[2.5%] w-full flex justify-center items-center"
                 >
                     <div className="w-[1200px] px-[20px] md:px-[30px]  float-left">
-                        <div className="text-[24px] text-[#0966FF] font-[700] mb-[15px]"> BÀI VIẾT NỔI BẬT</div>
+                        <div className="text-[24px] text-[#0077B6] font-[700] mb-[15px]"> BÀI VIẾT NỔI BẬT</div>
                         <div class="row align-items-start !grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4">
                             {feature?.map((item, idx) => {
                                 return (
                                     <div key={idx} class="w-full">
-                                        <div class="card border-0 !bg-[#FFBD59]">
+                                        <div class="card border-0 !bg-[#EBF1FF]">
                                             <div className="md:h-[186px]  overflow-hidden">
                                                 <img
                                                     onClick={() => {
@@ -162,11 +145,11 @@ function Home() {
                 <div className="flex flex-col md:flex-row justify-center items-start w-full max-w-[1200px] px-[20px] md:px-[30px] mt-[30px] md:mb-[40px]">
                     <div className="w-full md:w-[60%] md:mr-[25px] flex justify-center items-center flex-col">
                         <div style={{ marginRight: 'auto' }} className="md:pb-[40px float-left">
-                            <div className="text-[#0966FF] text-[24px] font-[700] pb-[20px] w-full">
-                                CÁCH XEM CHỈ TAY
+                            <div className="text-[#0077B6] text-[24px] font-[700] pb-[20px] w-full">
+                                THỰC PHẨM CHỨC NĂNG
                             </div>
                             <div className="flex flex-col !grid w-full md:grid-cols-3">
-                                {hp.map((item, idx) => {
+                                {ff.map((item, idx) => {
                                     return (
                                         <div
                                             key={idx}
@@ -190,62 +173,12 @@ function Home() {
                                         </div>
                                     );
                                 })}
-                                {/* <div className="flex flex-col justify-center items-center mb-[40px] md:mb-0 md:mr-[3%]">
-                                    <div className="overflow-hidden ">
-                                        <img
-                                            src={`${baseImage}${lastest[0]?.image}`}
-                                            className="hover:scale-110 transition-all duration-[300ms] w-full object-cover"
-                                            alt="..."
-                                        />
-                                    </div>
-                                    <div className=" ml-[10px] mt-[5px]">
-                                        <div className="text-[17px] font-[500] py-[10px] text-center  home-text">
-                                            {lastest[0]?.title}
-                                        </div>
-                                        <div className="text-[14px] text-[#c6c6c6] font-[400] text-5-line ">
-                                            {lastest[0]?.short_description}
-                                        </div>
-                                    </div>
-                                </div> */}
                             </div>
                         </div>
-
-                        {/* <div className="!grid grid-cols-1 md:grid-cols-2 row w-full">
-                            <div className="flex flex-row justify-center items-center pb-[20px]">
-                                <div className="overflow-hidden w-[50%]">
-                                    <img
-                                        src={`${baseImage}${hp[2]?.image}`}
-                                        className="hover:scale-110 transition-all duration-[300ms] w-full object-cover"
-                                        alt="..."
-                                    />
-                                </div>
-                                <div class="pl-[10px] w-[50%] card-text text-[15px] font-[500]  leading-[150%] text-left px-[10] py-[10px]">
-                                    {hp[2]?.title}
-                                </div>
-                            </div>
-                            <div className="flex flex-row justify-center items-center pb-[20px]">
-                                <img className="w-[50%]" src={`${baseImage}${hp[3]?.image}`} alt="..." />
-                                <div class="pl-[10px] w-[50%] card-text text-[15px] font-[500]  leading-[150%] text-left px-[10] py-[10px]">
-                                    {hp[3]?.title}
-                                </div>
-                            </div>
-                            <div className="flex flex-row justify-center items-center pb-[20px]">
-                                <img className="w-[50%]" src={`${baseImage}${hp[4]?.image}`} alt="..." />
-                                <div class="pl-[10px] w-[50%] card-text text-[15px] font-[500]  leading-[150%] text-left px-[10] py-[10px]">
-                                    {hp[4]?.title}
-                                </div>
-                            </div>
-                            <div className="flex flex-row justify-center items-center pb-[20px]">
-                                <img className="w-[50%]" src={`${baseImage}${hp[5]?.image}`} alt="..." />
-                                <div class="pl-[10px] w-[50%] card-text text-[15px] font-[500]  leading-[150%] text-left px-[10] py-[10px]">
-                                    {hp[5]?.title}
-                                </div>
-                            </div>
-                        </div> */}
                     </div>
                     <div className="w-full md:w-[40%] md:px-0">
-                        <div className="text-[#0966FF] text-[24px] font-[600]">XEM NHIỀU</div>
-                        <div class="w-full h-[2px] bg-[#0966FF] my-[20px]"></div>
+                        <div className="text-[#0077B6] text-[24px] font-[600]">XEM NHIỀU</div>
+                        <div class="w-full h-[2px] bg-[#0077B6] my-[20px]"></div>
                         <div>
                             {linkViews?.map((item, idx) => {
                                 return (
@@ -269,7 +202,7 @@ function Home() {
                                                 onClick={() => {
                                                     handleNewTab(item.link);
                                                 }}
-                                                class="text-[#0966FF] hover:text-[#0927EB] cursor-pointer hover:text-[#0927EB] cursor-pointer card-text text-[14px] font-[500] leading-[120%] text-left"
+                                                class="text-[#0077B6] hover:text-[#0927EB] cursor-pointer hover:text-[#0927EB] cursor-pointer card-text text-[14px] font-[500] leading-[120%] text-left"
                                             >
                                                 {item.title}
                                             </div>
@@ -285,11 +218,11 @@ function Home() {
                 </div>
 
                 <div
-                    style={{ backgroundColor: '#FFBD59' }}
+                    style={{ backgroundColor: '#EBF1FF' }}
                     className="item1 pt-[30px] pb-[20px] md:pb-[40px] bg-[#121020] w-full flex justify-center items-center"
                 >
                     <div className="max-w-[1200px] px-[20px] md:px-[30px] w-full">
-                        <div className="text-[24px] text-[#0966FF] font-[700] mb-[15px]">VIDEO</div>
+                        <div className="text-[24px] text-[#0077B6] font-[700] mb-[15px]">VIDEO</div>
                         <div class="row align-items-start !grid grid-cols-1 md:grid-cols-3">
                             {linkVideo?.map((item, idx) => {
                                 return (
@@ -316,7 +249,7 @@ function Home() {
                 <div className="flex flex-col md:flex-row justify-start items-start w-full max-w-[1200px] px-[20px] md:px-[30px] mt-[30px] mb-[40px]">
                     <div className="w-full md:w-full md:mr-[25px]">
                         <div className="md:pb-[25px]">
-                            <div className="text-[#0966FF] text-[24px] font-[700] pb-[30px]">LIFE COACH</div>
+                            <div className="text-[#0077B6] text-[24px] font-[700] pb-[30px]">LIFE COACH</div>
                             <div className="!grid grid-cols-1 md:grid-cols-2 row">
                                 {lc?.map((item, idx) => {
                                     return (
@@ -342,7 +275,7 @@ function Home() {
                                                     onClick={() => {
                                                         handleNavigate(item?.id);
                                                     }}
-                                                    className="text-[22px] text-[#0966FF] font-[700] py-[10px] home-text"
+                                                    className="text-[22px] text-[#0077B6] font-[700] py-[10px] home-text"
                                                 >
                                                     {item?.title}
                                                 </div>
@@ -357,9 +290,9 @@ function Home() {
                         </div>
                     </div>
                 </div>
-                <div className="w-full max-w-[1200px]" style={{ borderBottom: '4px solid #FFBD59' }}></div>
+                <div className="w-full max-w-[1200px]" style={{ borderBottom: '4px solid #0077B6' }}></div>
                 <div className="w-full max-w-[1200px] px-[20px] md:px-[30px] mt-[20px] md:mt-[50px] mb-[10px] md:mb-[50px]">
-                    <div className="text-[24px] text-[#0966FF] font-[700] mb-[20px] md:mb-[6px]">
+                    <div className="text-[24px] text-[#0077B6] font-[700] mb-[20px] md:mb-[6px]">
                         GIÁO DỤC TIẾNG NHẬT
                     </div>
                     <div class="row !grid sm:grid-cols-1 md:grid-cols-3  mb-[15px]">
@@ -398,9 +331,9 @@ function Home() {
                         })}
                     </div>
                 </div>
-                <div className="w-full max-w-[1200px]" style={{ borderBottom: '4px solid #FFBD59' }}></div>
+                <div className="w-full max-w-[1200px]" style={{ borderBottom: '4px solid #0077B6' }}></div>
                 <div className="w-full max-w-[1200px] px-[20px] md:px-[30px] mt-[20px] md:mt-[50px] mb-[10px] md:mb-[50px]">
-                    <div className="text-[24px] text-[#0966FF] font-[700] mb-[20px] md:mb-[6px]">
+                    <div className="text-[24px] text-[#0077B6] font-[700] mb-[20px] md:mb-[6px]">
                         PHIÊN DỊCH, DỊCH THUẬT NHẬT-VIỆT
                     </div>
                     <div className="row !grid sm:grid-cols-1 md:grid-cols-3  mb-[15px]">

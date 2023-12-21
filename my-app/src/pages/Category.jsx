@@ -51,6 +51,9 @@ function Category() {
         } else if (location.pathname.includes('course_hp')) {
             setTitle('KHÓA HỌC CÁCH XEM CHỈ TAY');
             category = 'COURSE_HP';
+        } else if (location.pathname.includes('course_jp')) {
+            setTitle('KHÓA HỌC TIẾNG NHẬT');
+            category = 'COURSE_JP';
         }
         axios.get(`${baseApi}/blog/${category}/page`).then((res) => {
             setMaxLenth(res.data.num_pages);

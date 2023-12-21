@@ -66,7 +66,7 @@ function Search() {
                         <div className="flex flex-col md:flex-row w-full">
                             <div className={`'w-full md:w-[25%]' w-[25%] mt-[30px] mr-[30px] h-fit`}>
                                 <div className=" border-[1px] border-solid border-[#eaeaea]">
-                                    <div className="bg-[#FFCC29] text-[#2E3E86] px-[20px] py-[10px] text-[18px] font-[700] uppercase border-b-[1px] border-solid border-[#eaeaea]">
+                                    <div className="bg-[#EBF1FF] text-[#2E3E86] px-[20px] py-[10px] text-[18px] font-[700] uppercase border-b-[1px] border-solid border-[#eaeaea]">
                                         Bài viết mới
                                     </div>
                                     <div className="p-[20px]">
@@ -80,7 +80,7 @@ function Search() {
                                     </div>
                                 </div>
                                 <div className=" border-[1px] border-solid border-[#eaeaea] mt-[20px] mb-[20px]">
-                                    <div className="bg-[#FFCC29] text-[#2E3E86] px-[20px] py-[10px] text-[18px] font-[700] uppercase border-b-[1px] border-solid border-[#eaeaea]">
+                                    <div className="bg-[#EBF1FF] text-[#2E3E86] px-[20px] py-[10px] text-[18px] font-[700] uppercase border-b-[1px] border-solid border-[#eaeaea]">
                                         Chuyên mục
                                     </div>
                                     <div className="p-[20px] flex flex-col">

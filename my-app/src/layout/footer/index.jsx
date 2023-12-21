@@ -33,7 +33,7 @@ function Footer() {
     return (
         <footer
             // style={{ backgroundColor: '#0966FF', borderTop: '3px solid #84cf3f' }}
-            style={{ backgroundColor: '#0966FF' }}
+            style={{ backgroundColor: '#1877F2' }}
             className="flex justify-center items-center"
         >
             <div
