@@ -23,8 +23,8 @@ function Header() {
             route: '/category/life_coach',
         },
         {
-            label: 'chỉ tay',
-            route: '/category/pointing_hand',
+            label: 'thực phẩm chức năng',
+            route: '/category/fun_food',
         },
         {
             label: 'giáo dục tiếng nhật',

@@ -36,9 +36,9 @@ function Category() {
         if (location.pathname.includes('life_coach')) {
             setTitle('LIFE COACH');
             category = 'LIFE_COACH';
-        } else if (location.pathname.includes('pointing_hand')) {
-            setTitle('CÁCH XEM CHỈ TAY');
-            category = 'HAND_POINTING';
+        } else if (location.pathname.includes('fun_food')) {
+            setTitle('THỰC PHẨM CHỨC NĂNG');
+            category = 'FUNCTIONAL_FOODS';
         } else if (location.pathname.includes('education')) {
             setTitle('GIÁO DỤC TIẾNG NHẬT');
             category = 'EDUCATION';
